@@ -1,0 +1,222 @@
+@prefix : <http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/> .
+
+<http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas> rdf:type owl:Ontology ;
+                                                                        rdfs:comment "Ontología de la rueda de las drogas" .
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas#AméricaPaís
+:AméricaPaís rdf:type owl:Class ;
+             rdfs:subClassOf :País .
+
+
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas#ArabiaSaudíPaís
+:ArabiaSaudíPaís rdf:type owl:Class ;
+                 rdfs:subClassOf :AsiaPaís .
+
+
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas#AsiaPaís
+:AsiaPaís rdf:type owl:Class ;
+          rdfs:subClassOf :País .
+
+
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas#BrasilPaís
+:BrasilPaís rdf:type owl:Class ;
+            rdfs:subClassOf :AméricaPaís .
+
+
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas#CannabinoidesBase
+:CannabinoidesBase rdf:type owl:Class ;
+                   rdfs:subClassOf :Droga .
+
+
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas#ColombiaPaís
+:ColombiaPaís rdf:type owl:Class ;
+              rdfs:subClassOf :AméricaPaís .
+
+
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas#ComercioDeEstupefacientesBase
+:ComercioDeEstupefacientesBase rdf:type owl:Class ;
+                               rdfs:subClassOf :Delito .
+
+
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas#CultivoBase
+:CultivoBase rdf:type owl:Class ;
+             rdfs:subClassOf :Delito .
+
+
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas#Delito
+:Delito rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas#DepresorasBase
+:DepresorasBase rdf:type owl:Class ;
+                rdfs:subClassOf :Droga .
+
+
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas#DisociativasBase
+:DisociativasBase rdf:type owl:Class ;
+                  rdfs:subClassOf :Droga .
+
+
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas#Droga
+:Droga rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas#Edad
+:Edad rdf:type owl:Class ;
+      rdfs:subClassOf :Persona ;
+      owl:disjointWith :Sexo .
+
+
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas#ElaboraciónBase
+:ElaboraciónBase rdf:type owl:Class ;
+                 rdfs:subClassOf :Delito .
+
+
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas#EmpatógenasBase
+:EmpatógenasBase rdf:type owl:Class ;
+                 rdfs:subClassOf :Droga .
+
+
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas#EspañaPaís
+:EspañaPaís rdf:type owl:Class ;
+            rdfs:subClassOf :EuropaPaís ;
+            owl:disjointWith :HolandaPaís .
+
+
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas#EstadosUnidosPaís
+:EstadosUnidosPaís rdf:type owl:Class ;
+                   rdfs:subClassOf :AméricaPaís .
+
+
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas#EstimulantesBase
+:EstimulantesBase rdf:type owl:Class ;
+                  rdfs:subClassOf :Droga .
+
+
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas#EuropaPaís
+:EuropaPaís rdf:type owl:Class ;
+            rdfs:subClassOf :País .
+
+
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas#FacilitaciónDelConsumoBase
+:FacilitaciónDelConsumoBase rdf:type owl:Class ;
+                            rdfs:subClassOf :Delito .
+
+
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas#HolandaPaís
+:HolandaPaís rdf:type owl:Class ;
+             rdfs:subClassOf :EuropaPaís .
+
+
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas#Hombre
+:Hombre rdf:type owl:Class ;
+        rdfs:subClassOf :Sexo ;
+        owl:disjointWith :Mujer .
+
+
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas#Mayor
+:Mayor rdf:type owl:Class ;
+       rdfs:subClassOf :Edad ;
+       owl:disjointWith :Menor .
+
+
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas#Menor
+:Menor rdf:type owl:Class ;
+       rdfs:subClassOf :Edad .
+
+
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas#Mujer
+:Mujer rdf:type owl:Class ;
+       rdfs:subClassOf :Sexo .
+
+
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas#OpioidesBase
+:OpioidesBase rdf:type owl:Class ;
+              rdfs:subClassOf :Droga .
+
+
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas#País
+:País rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas#Persona
+:Persona rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas#PsicodélicasBase
+:PsicodélicasBase rdf:type owl:Class ;
+                  rdfs:subClassOf :Droga .
+
+
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas#Sexo
+:Sexo rdf:type owl:Class ;
+      rdfs:subClassOf :Persona .
+
+
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas#TraficoDePrecursoresBase
+:TraficoDePrecursoresBase rdf:type owl:Class ;
+                          rdfs:subClassOf :Delito .
+
+
+#################################################################
+#    General axioms
+#################################################################
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :AméricaPaís
+                :AsiaPaís
+                :EuropaPaís
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :BrasilPaís
+                :ColombiaPaís
+                :EstadosUnidosPaís
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :CannabinoidesBase
+                :DepresorasBase
+                :DisociativasBase
+                :EmpatógenasBase
+                :EstimulantesBase
+                :OpioidesBase
+                :PsicodélicasBase
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :ComercioDeEstupefacientesBase
+                :CultivoBase
+                :ElaboraciónBase
+                :FacilitaciónDelConsumoBase
+                :TraficoDePrecursoresBase
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :Delito
+                :Droga
+                :País
+                :Persona
+              )
+] .
+
+
+###  Generated by the OWL API (version 4.5.26.2023-07-17T20:34:13Z) https://github.com/owlcs/owlapi
