@@ -10,162 +10,440 @@
                                                                         rdfs:comment "Ontología de la rueda de las drogas" .
 
 #################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas#enTratamientoDeDesintoxicación
+:enTratamientoDeDesintoxicación rdf:type owl:ObjectProperty ;
+                                rdfs:domain :Persona ;
+                                rdfs:range :Edad .
+
+
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/cargosPor
+:cargosPor rdf:type owl:ObjectProperty ;
+           rdfs:domain :Persona ;
+           rdfs:range :Delito .
+
+
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/ilegalizadaEn
+:ilegalizadaEn rdf:type owl:ObjectProperty ;
+               rdfs:domain :Droga ;
+               rdfs:range :País .
+
+
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/legalizadaEn
+:legalizadaEn rdf:type owl:ObjectProperty ;
+              rdfs:domain :Droga ;
+              rdfs:range :País .
+
+
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/lugarDeResidenciaDe
+:lugarDeResidenciaDe rdf:type owl:ObjectProperty ;
+                     owl:inverseOf :residenteEn ;
+                     rdfs:domain :País ;
+                     rdfs:range :Persona .
+
+
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/positivoEn
+:positivoEn rdf:type owl:ObjectProperty ;
+            rdfs:domain :Persona ;
+            rdfs:range :Droga .
+
+
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/residenteEn
+:residenteEn rdf:type owl:ObjectProperty ;
+             rdfs:domain :Persona ;
+             rdfs:range :País .
+
+
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/tieneEdad
+:tieneEdad rdf:type owl:ObjectProperty ;
+           rdfs:domain :Persona ;
+           rdfs:range :Edad .
+
+
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/tieneSexo
+:tieneSexo rdf:type owl:ObjectProperty ;
+           rdfs:domain :Persona ;
+           rdfs:range :Sexo .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas#nombreSexo
+:nombreSexo rdf:type owl:DatatypeProperty ;
+            rdfs:domain :Sexo .
+
+
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/añosDelitoEnPrisión
+:añosDelitoEnPrisión rdf:type owl:DatatypeProperty ;
+                     rdfs:domain :Delito ;
+                     rdfs:range xsd:int .
+
+
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/esLegal
+:esLegal rdf:type owl:DatatypeProperty ;
+         rdfs:domain :Droga ;
+         rdfs:range xsd:boolean .
+
+
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/nombreDroga
+:nombreDroga rdf:type owl:DatatypeProperty ;
+             rdfs:domain :Droga ;
+             rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/nombrePaís
+:nombrePaís rdf:type owl:DatatypeProperty ;
+            rdfs:domain :País ;
+            rdfs:range xsd:string .
+
+
+#################################################################
 #    Classes
 #################################################################
 
-###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas#AméricaPaís
-:AméricaPaís rdf:type owl:Class ;
-             rdfs:subClassOf :País .
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas#Consumo
+:Consumo rdf:type owl:Class ;
+         rdfs:subClassOf :Delito .
 
 
-###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas#ArabiaSaudíPaís
-:ArabiaSaudíPaís rdf:type owl:Class ;
-                 rdfs:subClassOf :AsiaPaís .
-
-
-###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas#AsiaPaís
-:AsiaPaís rdf:type owl:Class ;
-          rdfs:subClassOf :País .
-
-
-###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas#BrasilPaís
-:BrasilPaís rdf:type owl:Class ;
-            rdfs:subClassOf :AméricaPaís .
-
-
-###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas#CannabinoidesBase
-:CannabinoidesBase rdf:type owl:Class ;
-                   rdfs:subClassOf :Droga .
-
-
-###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas#ColombiaPaís
-:ColombiaPaís rdf:type owl:Class ;
-              rdfs:subClassOf :AméricaPaís .
-
-
-###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas#ComercioDeEstupefacientesBase
-:ComercioDeEstupefacientesBase rdf:type owl:Class ;
-                               rdfs:subClassOf :Delito .
-
-
-###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas#CultivoBase
-:CultivoBase rdf:type owl:Class ;
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas#Suministrar
+:Suministrar rdf:type owl:Class ;
              rdfs:subClassOf :Delito .
 
 
-###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas#Delito
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/Cannabinoides
+:Cannabinoides rdf:type owl:Class ;
+               rdfs:subClassOf :Droga .
+
+
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/Cultivo
+:Cultivo rdf:type owl:Class ;
+         rdfs:subClassOf :Delito .
+
+
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/Delito
 :Delito rdf:type owl:Class .
 
 
-###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas#DepresorasBase
-:DepresorasBase rdf:type owl:Class ;
-                rdfs:subClassOf :Droga .
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/Depresoras
+:Depresoras rdf:type owl:Class ;
+            rdfs:subClassOf :Droga .
 
 
-###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas#DisociativasBase
-:DisociativasBase rdf:type owl:Class ;
-                  rdfs:subClassOf :Droga .
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/Disociativas
+:Disociativas rdf:type owl:Class ;
+              rdfs:subClassOf :Droga .
 
 
-###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas#Droga
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/Droga
 :Droga rdf:type owl:Class .
 
 
-###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas#Edad
-:Edad rdf:type owl:Class ;
-      rdfs:subClassOf :Persona ;
-      owl:disjointWith :Sexo .
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/Edad
+:Edad rdf:type owl:Class .
 
 
-###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas#ElaboraciónBase
-:ElaboraciónBase rdf:type owl:Class ;
-                 rdfs:subClassOf :Delito .
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/Empatógenas
+:Empatógenas rdf:type owl:Class ;
+             rdfs:subClassOf :Droga .
 
 
-###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas#EmpatógenasBase
-:EmpatógenasBase rdf:type owl:Class ;
-                 rdfs:subClassOf :Droga .
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/Estimulantes
+:Estimulantes rdf:type owl:Class ;
+              rdfs:subClassOf :Droga .
 
 
-###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas#EspañaPaís
-:EspañaPaís rdf:type owl:Class ;
-            rdfs:subClassOf :EuropaPaís ;
-            owl:disjointWith :HolandaPaís .
-
-
-###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas#EstadosUnidosPaís
-:EstadosUnidosPaís rdf:type owl:Class ;
-                   rdfs:subClassOf :AméricaPaís .
-
-
-###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas#EstimulantesBase
-:EstimulantesBase rdf:type owl:Class ;
-                  rdfs:subClassOf :Droga .
-
-
-###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas#EuropaPaís
-:EuropaPaís rdf:type owl:Class ;
-            rdfs:subClassOf :País .
-
-
-###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas#FacilitaciónDelConsumoBase
-:FacilitaciónDelConsumoBase rdf:type owl:Class ;
-                            rdfs:subClassOf :Delito .
-
-
-###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas#HolandaPaís
-:HolandaPaís rdf:type owl:Class ;
-             rdfs:subClassOf :EuropaPaís .
-
-
-###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas#Hombre
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/Hombre
 :Hombre rdf:type owl:Class ;
         rdfs:subClassOf :Sexo ;
         owl:disjointWith :Mujer .
 
 
-###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas#Mayor
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/Mayor
 :Mayor rdf:type owl:Class ;
        rdfs:subClassOf :Edad ;
        owl:disjointWith :Menor .
 
 
-###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas#Menor
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/Menor
 :Menor rdf:type owl:Class ;
        rdfs:subClassOf :Edad .
 
 
-###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas#Mujer
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/Mujer
 :Mujer rdf:type owl:Class ;
        rdfs:subClassOf :Sexo .
 
 
-###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas#OpioidesBase
-:OpioidesBase rdf:type owl:Class ;
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/Opioides
+:Opioides rdf:type owl:Class ;
+          rdfs:subClassOf :Droga .
+
+
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/País
+:País rdf:type owl:Class ;
+      rdfs:subClassOf [ rdf:type owl:Restriction ;
+                        owl:onProperty :lugarDeResidenciaDe ;
+                        owl:someValuesFrom :Persona
+                      ] .
+
+
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/Persona
+:Persona rdf:type owl:Class ;
+         rdfs:subClassOf [ rdf:type owl:Restriction ;
+                           owl:onProperty :residenteEn ;
+                           owl:someValuesFrom :País
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :tieneEdad ;
+                           owl:someValuesFrom :Edad
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :tieneSexo ;
+                           owl:someValuesFrom :Sexo
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :tieneEdad ;
+                           owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                           owl:onClass :Edad
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :tieneSexo ;
+                           owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                           owl:onClass :Sexo
+                         ] .
+
+
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/Psicodélicas
+:Psicodélicas rdf:type owl:Class ;
               rdfs:subClassOf :Droga .
 
 
-###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas#País
-:País rdf:type owl:Class .
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/Sexo
+:Sexo rdf:type owl:Class .
 
 
-###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas#Persona
-:Persona rdf:type owl:Class .
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas#2C-B
+<http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas#2C-B> rdf:type owl:NamedIndividual ,
+                                                                                     :Psicodélicas .
 
 
-###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas#PsicodélicasBase
-:PsicodélicasBase rdf:type owl:Class ;
-                  rdfs:subClassOf :Droga .
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/Aceite_de_hachís_de_butano
+:Aceite_de_hachís_de_butano rdf:type owl:NamedIndividual ,
+                                     :Cannabinoides .
 
 
-###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas#Sexo
-:Sexo rdf:type owl:Class ;
-      rdfs:subClassOf :Persona .
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/Alcohol
+:Alcohol rdf:type owl:NamedIndividual ,
+                  :Depresoras .
 
 
-###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas#TraficoDePrecursoresBase
-:TraficoDePrecursoresBase rdf:type owl:Class ;
-                          rdfs:subClassOf :Delito .
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/Anfetaminas
+:Anfetaminas rdf:type owl:NamedIndividual ,
+                      :Estimulantes .
+
+
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/Ayahuasca
+:Ayahuasca rdf:type owl:NamedIndividual ,
+                    :Psicodélicas .
+
+
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/Benzodiazepines
+:Benzodiazepines rdf:type owl:NamedIndividual ,
+                          :Depresoras .
+
+
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/Buprenorfina
+:Buprenorfina rdf:type owl:NamedIndividual ,
+                       :Opioides .
+
+
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/Buprenorfina_-_inyectable_de_acción_prolongada
+:Buprenorfina_-_inyectable_de_acción_prolongada rdf:type owl:NamedIndividual ,
+                                                         :Opioides .
+
+
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/Cafeína
+:Cafeína rdf:type owl:NamedIndividual ,
+                  :Estimulantes .
+
+
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/Canabis
+:Canabis rdf:type owl:NamedIndividual ,
+                  :Cannabinoides .
+
+
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/Canabis_medicinal
+:Canabis_medicinal rdf:type owl:NamedIndividual ,
+                            :Cannabinoides .
+
+
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/Cannabidiol
+:Cannabidiol rdf:type owl:NamedIndividual ,
+                      :Cannabinoides .
+
+
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/Cannabinoides_sintéticos
+:Cannabinoides_sintéticos rdf:type owl:NamedIndividual ,
+                                   :Cannabinoides .
+
+
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/Cocaína
+:Cocaína rdf:type owl:NamedIndividual ,
+                  :Estimulantes .
+
+
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/Codeína
+:Codeína rdf:type owl:NamedIndividual ,
+                  :Opioides .
+
+
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/DMT
+:DMT rdf:type owl:NamedIndividual ,
+              :Psicodélicas .
+
+
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/DXM
+:DXM rdf:type owl:NamedIndividual ,
+              :Disociativas .
+
+
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/Dexanfetamina
+:Dexanfetamina rdf:type owl:NamedIndividual ,
+                        :Estimulantes .
+
+
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/Etilona
+:Etilona rdf:type owl:NamedIndividual ,
+                  :Empatógenas .
+
+
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/Fentanilo
+:Fentanilo rdf:type owl:NamedIndividual ,
+                    :Opioides .
+
+
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/GHB
+:GHB rdf:type owl:NamedIndividual ,
+              :Depresoras .
+
+
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/Heroína
+:Heroína rdf:type owl:NamedIndividual ,
+                  :Opioides .
+
+
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/Kava
+:Kava rdf:type owl:NamedIndividual ,
+               :Depresoras .
+
+
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/Ketamina
+:Ketamina rdf:type owl:NamedIndividual ,
+                   :Disociativas .
+
+
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/Khat
+:Khat rdf:type owl:NamedIndividual ,
+               :Estimulantes .
+
+
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/LSD
+:LSD rdf:type owl:NamedIndividual ,
+              :Psicodélicas .
+
+
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/MDA
+:MDA rdf:type owl:NamedIndividual ,
+              :Empatógenas .
+
+
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/MDMA
+:MDMA rdf:type owl:NamedIndividual ,
+               :Empatógenas .
+
+
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/Mefedrona
+:Mefedrona rdf:type owl:NamedIndividual ,
+                    :Empatógenas .
+
+
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/Mescalina
+:Mescalina rdf:type owl:NamedIndividual ,
+                    :Psicodélicas .
+
+
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/Metadona
+:Metadona rdf:type owl:NamedIndividual ,
+                   :Opioides .
+
+
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/Metanfentamina_cristalina
+:Metanfentamina_cristalina rdf:type owl:NamedIndividual ,
+                                    :Estimulantes .
+
+
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/Metoxetamina
+:Metoxetamina rdf:type owl:NamedIndividual ,
+                       :Disociativas .
+
+
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/NBOMes
+:NBOMes rdf:type owl:NamedIndividual ,
+                 :Psicodélicas .
+
+
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/Nitazenos
+:Nitazenos rdf:type owl:NamedIndividual ,
+                    :Opioides .
+
+
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/Nuez_de_betel
+:Nuez_de_betel rdf:type owl:NamedIndividual ,
+                        :Estimulantes .
+
+
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/Opio
+:Opio rdf:type owl:NamedIndividual ,
+               :Opioides .
+
+
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/Oxicodona
+:Oxicodona rdf:type owl:NamedIndividual ,
+                    :Opioides .
+
+
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/Psilocibina
+:Psilocibina rdf:type owl:NamedIndividual ,
+                      :Psicodélicas .
+
+
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/Salvia
+:Salvia rdf:type owl:NamedIndividual ,
+                 :Psicodélicas .
+
+
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/Tabaco
+:Tabaco rdf:type owl:NamedIndividual ,
+                 :Estimulantes .
+
+
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/catinonas_sintéticas
+:catinonas_sintéticas rdf:type owl:NamedIndividual ,
+                               :Estimulantes .
+
+
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/Óxido_nitroso
+:Óxido_nitroso rdf:type owl:NamedIndividual ,
+                        :Disociativas .
 
 
 #################################################################
@@ -173,39 +451,13 @@
 #################################################################
 
 [ rdf:type owl:AllDisjointClasses ;
-  owl:members ( :AméricaPaís
-                :AsiaPaís
-                :EuropaPaís
-              )
-] .
-
-
-[ rdf:type owl:AllDisjointClasses ;
-  owl:members ( :BrasilPaís
-                :ColombiaPaís
-                :EstadosUnidosPaís
-              )
-] .
-
-
-[ rdf:type owl:AllDisjointClasses ;
-  owl:members ( :CannabinoidesBase
-                :DepresorasBase
-                :DisociativasBase
-                :EmpatógenasBase
-                :EstimulantesBase
-                :OpioidesBase
-                :PsicodélicasBase
-              )
-] .
-
-
-[ rdf:type owl:AllDisjointClasses ;
-  owl:members ( :ComercioDeEstupefacientesBase
-                :CultivoBase
-                :ElaboraciónBase
-                :FacilitaciónDelConsumoBase
-                :TraficoDePrecursoresBase
+  owl:members ( :Cannabinoides
+                :Depresoras
+                :Disociativas
+                :Empatógenas
+                :Estimulantes
+                :Opioides
+                :Psicodélicas
               )
 ] .
 
