@@ -13,120 +13,26 @@
 #    Object Properties
 #################################################################
 
-###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas#ConsumeDroga
-:ConsumeDroga rdf:type owl:ObjectProperty ;
-              rdfs:domain :Consumidor ;
-              rdfs:range :Droga .
-
-
-###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas#perteneceAEdad
-:perteneceAEdad rdf:type owl:ObjectProperty ;
-                rdfs:domain :Consumidor ,
-                            :Población .
-
-
-###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/esDeSexo
-:esDeSexo rdf:type owl:ObjectProperty ;
-          rdfs:domain :Consumidor ,
-                      :Población ,
-                      :SobredosisLetal ,
-                      :TratamientoDesintoxicación ;
-          rdfs:range :Sexo .
-
-
-###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/sonDePaís
-:sonDePaís rdf:type owl:ObjectProperty ;
-           owl:inverseOf :tienePoblación ;
-           rdfs:domain :Población ;
-           rdfs:range :País .
-
-
-###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/tieneCasoTratamiento
-:tieneCasoTratamiento rdf:type owl:ObjectProperty ;
-                      rdfs:domain :País ;
-                      rdfs:range :TratamientoDesintoxicación .
-
-
-###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/tieneConsumidores
-:tieneConsumidores rdf:type owl:ObjectProperty ;
-                   rdfs:domain :País ;
-                   rdfs:range :Consumidor .
-
-
-###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/tieneFallecidosPorSobredosis
-:tieneFallecidosPorSobredosis rdf:type owl:ObjectProperty ;
-                              rdfs:domain :País ;
-                              rdfs:range :SobredosisLetal .
-
-
-###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/tienePoblación
-:tienePoblación rdf:type owl:ObjectProperty ;
-                rdfs:domain :País ;
-                rdfs:range :Población .
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/ocurreEnPaís
+:ocurreEnPaís rdf:type owl:ObjectProperty ;
+              rdfs:domain :SobredosisLetal ;
+              rdfs:range :País .
 
 
 #################################################################
 #    Data properties
 #################################################################
 
-###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas#casosLetales
-:casosLetales rdf:type owl:DatatypeProperty ;
-              rdfs:domain :SobredosisLetal ;
-              rdfs:range xsd:int .
-
-
-###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas#casosLetalesHombres
-:casosLetalesHombres rdf:type owl:DatatypeProperty ;
-                     rdfs:domain :SobredosisLetal ;
-                     rdfs:range xsd:int .
-
-
-###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas#casosLetalesMujeres
-:casosLetalesMujeres rdf:type owl:DatatypeProperty ;
-                     rdfs:domain :SobredosisLetal ;
-                     rdfs:range xsd:int .
-
-
-###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas#casosRecaída
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/casosRecaída
 :casosRecaída rdf:type owl:DatatypeProperty ;
               rdfs:domain :TratamientoDesintoxicación ;
               rdfs:range xsd:int .
 
 
-###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas#casosRehabilitación
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/casosRehabilitación
 :casosRehabilitación rdf:type owl:DatatypeProperty ;
                      rdfs:domain :TratamientoDesintoxicación ;
                      rdfs:range xsd:int .
-
-
-###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas#tieneConsumidoresCannabis
-:tieneConsumidoresCannabis rdf:type owl:DatatypeProperty ;
-                           rdfs:domain :Consumidor ;
-                           rdfs:range xsd:int .
-
-
-###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas#tieneConsumidoresCocaína
-:tieneConsumidoresCocaína rdf:type owl:DatatypeProperty ;
-                          rdfs:domain :Consumidor ;
-                          rdfs:range xsd:int .
-
-
-###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas#tieneConsumidoresDrogas
-:tieneConsumidoresDrogas rdf:type owl:DatatypeProperty ;
-                         rdfs:domain :Consumidor ;
-                         rdfs:range xsd:int .
-
-
-###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas#tienePoblaciónFemenina
-:tienePoblaciónFemenina rdf:type owl:DatatypeProperty ;
-                        rdfs:domain :País ;
-                        rdfs:range xsd:int .
-
-
-###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas#tienePoblaciónMasculina
-:tienePoblaciónMasculina rdf:type owl:DatatypeProperty ;
-                         rdfs:domain :País ;
-                         rdfs:range xsd:int .
 
 
 ###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/nombreDroga
@@ -135,10 +41,55 @@
              rdfs:range xsd:string .
 
 
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/tieneConsumidoresCannabis
+:tieneConsumidoresCannabis rdf:type owl:DatatypeProperty ;
+                           rdfs:range xsd:int .
+
+
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/tieneConsumidoresCocaína
+:tieneConsumidoresCocaína rdf:type owl:DatatypeProperty ;
+                          rdfs:range xsd:int .
+
+
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/tieneConsumidoresDrogas
+:tieneConsumidoresDrogas rdf:type owl:DatatypeProperty ;
+                         rdfs:range xsd:int .
+
+
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/tieneFallecidos
+:tieneFallecidos rdf:type owl:DatatypeProperty ;
+                 rdfs:domain :SobredosisLetal ;
+                 rdfs:range xsd:int .
+
+
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/tieneFallecidosHombres
+:tieneFallecidosHombres rdf:type owl:DatatypeProperty ;
+                        rdfs:domain :SobredosisLetal ;
+                        rdfs:range xsd:int .
+
+
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/tieneFallecidosMujeres
+:tieneFallecidosMujeres rdf:type owl:DatatypeProperty ;
+                        rdfs:domain :SobredosisLetal ;
+                        rdfs:range xsd:int .
+
+
 ###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/tieneNombrePais
 :tieneNombrePais rdf:type owl:DatatypeProperty ;
                  rdfs:domain :País ;
                  rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/tienePoblaciónFemenina
+:tienePoblaciónFemenina rdf:type owl:DatatypeProperty ;
+                        rdfs:domain :País ;
+                        rdfs:range xsd:int .
+
+
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/tienePoblaciónMasculina
+:tienePoblaciónMasculina rdf:type owl:DatatypeProperty ;
+                         rdfs:domain :País ;
+                         rdfs:range xsd:int .
 
 
 ###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/tienePoblaciónTotal
@@ -154,10 +105,6 @@
 ###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/Cannabinoides
 :Cannabinoides rdf:type owl:Class ;
                rdfs:subClassOf :Droga .
-
-
-###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/Consumidor
-:Consumidor rdf:type owl:Class .
 
 
 ###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/Depresoras
@@ -197,10 +144,6 @@
 :País rdf:type owl:Class .
 
 
-###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/Población
-:Población rdf:type owl:Class .
-
-
 ###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/Psicodélicas
 :Psicodélicas rdf:type owl:Class ;
               rdfs:subClassOf :Droga .
@@ -233,54 +176,58 @@
 #    Individuals
 #################################################################
 
-###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas#Alemania
-:Alemania rdf:type owl:NamedIndividual ,
-                   :País .
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas#SL_1
+:SL_1 rdf:type owl:NamedIndividual ,
+               :SobredosisLetal ;
+      :ocurreEnPaís :Bélgica ;
+      :tieneFallecidos "172"^^xsd:int ;
+      :tieneFallecidosHombres "137"^^xsd:int ;
+      :tieneFallecidosMujeres "35"^^xsd:int .
 
 
-###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas#Ambos
-:Ambos rdf:type owl:NamedIndividual ,
-                :Sexo .
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas#SL_2
+:SL_2 rdf:type owl:NamedIndividual ,
+               :SobredosisLetal ;
+      :ocurreEnPaís :RepúblicaCheca ;
+      :tieneFallecidos "64"^^xsd:int ;
+      :tieneFallecidosHombres "42"^^xsd:int ;
+      :tieneFallecidosMujeres "22"^^xsd:int .
 
 
-###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas#Bélgica
-:Bélgica rdf:type owl:NamedIndividual ,
-                  :País .
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas#SL_3
+:SL_3 rdf:type owl:NamedIndividual ,
+               :SobredosisLetal ;
+      :ocurreEnPaís :Alemania ;
+      :tieneFallecidos "1631"^^xsd:int ;
+      :tieneFallecidosHombres "1354"^^xsd:int ;
+      :tieneFallecidosMujeres "277"^^xsd:int .
 
 
-###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas#España
-:España rdf:type owl:NamedIndividual ,
-                 :País .
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas#SL_4
+:SL_4 rdf:type owl:NamedIndividual ,
+               :SobredosisLetal ;
+      :ocurreEnPaís :Holanda ;
+      :tieneFallecidos "332"^^xsd:int ;
+      :tieneFallecidosHombres "248"^^xsd:int ;
+      :tieneFallecidosMujeres "84"^^xsd:int .
 
 
-###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas#Femenino
-:Femenino rdf:type owl:NamedIndividual ,
-                   :Sexo .
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas#SL_5
+:SL_5 rdf:type owl:NamedIndividual ,
+               :SobredosisLetal ;
+      :ocurreEnPaís :Portugal ;
+      :tieneFallecidos "81"^^xsd:int ;
+      :tieneFallecidosHombres "67"^^xsd:int ;
+      :tieneFallecidosMujeres "14"^^xsd:int .
 
 
-###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas#GrupoEdad15A64
-:GrupoEdad15A64 rdf:type owl:NamedIndividual ,
-                         :Edad .
-
-
-###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas#Holanda
-:Holanda rdf:type owl:NamedIndividual ,
-                  :País .
-
-
-###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas#Masculino
-:Masculino rdf:type owl:NamedIndividual ,
-                    :Sexo .
-
-
-###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas#Portugal
-:Portugal rdf:type owl:NamedIndividual ,
-                   :País .
-
-
-###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas#RepúblicaCheca
-:RepúblicaCheca rdf:type owl:NamedIndividual ,
-                         :País .
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas#SL_6
+:SL_6 rdf:type owl:NamedIndividual ,
+               :SobredosisLetal ;
+      :ocurreEnPaís :España ;
+      :tieneFallecidos "820"^^xsd:int ;
+      :tieneFallecidosHombres "615"^^xsd:int ;
+      :tieneFallecidosMujeres "205"^^xsd:int .
 
 
 ###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas#2C-B
@@ -296,6 +243,19 @@
 ###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/Alcohol
 :Alcohol rdf:type owl:NamedIndividual ,
                   :Depresoras .
+
+
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/Alemania
+:Alemania rdf:type owl:NamedIndividual ,
+                   :País ;
+          :tienePoblaciónFemenina "26198019"^^xsd:int ;
+          :tienePoblaciónMasculina "26995671"^^xsd:int ;
+          :tienePoblaciónTotal "53193690"^^xsd:int .
+
+
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/Ambos
+:Ambos rdf:type owl:NamedIndividual ,
+                :Sexo .
 
 
 ###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/Anfetaminas
@@ -321,6 +281,14 @@
 ###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/Buprenorfina_-_inyectable_de_acción_prolongada
 :Buprenorfina_-_inyectable_de_acción_prolongada rdf:type owl:NamedIndividual ,
                                                          :Opioides .
+
+
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/Bélgica
+:Bélgica rdf:type owl:NamedIndividual ,
+                  :País ;
+         :tienePoblaciónMasculina "3678338"^^xsd:int ,
+                                  "3738152"^^xsd:int ;
+         :tienePoblaciónTotal "7416490"^^xsd:int .
 
 
 ###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/Cafeína
@@ -373,9 +341,22 @@
                         :Estimulantes .
 
 
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/España
+:España rdf:type owl:NamedIndividual ,
+                 :País ;
+        :tienePoblaciónFemenina "15637979"^^xsd:int ;
+        :tienePoblaciónMasculina "15779534"^^xsd:int ;
+        :tienePoblaciónTotal "31417513"^^xsd:int .
+
+
 ###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/Etilona
 :Etilona rdf:type owl:NamedIndividual ,
                   :Empatógenas .
+
+
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/Femenino
+:Femenino rdf:type owl:NamedIndividual ,
+                   :Sexo .
 
 
 ###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/Fentanilo
@@ -388,9 +369,22 @@
               :Depresoras .
 
 
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/GrupoEdad15A64
+:GrupoEdad15A64 rdf:type owl:NamedIndividual ,
+                         :Edad .
+
+
 ###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/Heroína
 :Heroína rdf:type owl:NamedIndividual ,
                   :Opioides .
+
+
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/Holanda
+:Holanda rdf:type owl:NamedIndividual ,
+                  :País ;
+         :tienePoblaciónFemenina "5636788"^^xsd:int ;
+         :tienePoblaciónMasculina "5715970"^^xsd:int ;
+         :tienePoblaciónTotal "11352758"^^xsd:int .
 
 
 ###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/Kava
@@ -421,6 +415,11 @@
 ###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/MDMA
 :MDMA rdf:type owl:NamedIndividual ,
                :Empatógenas .
+
+
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/Masculino
+:Masculino rdf:type owl:NamedIndividual ,
+                    :Sexo .
 
 
 ###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/Mefedrona
@@ -473,9 +472,25 @@
                     :Opioides .
 
 
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/Portugal
+:Portugal rdf:type owl:NamedIndividual ,
+                   :País ;
+          :tienePoblaciónFemenina "3385614"^^xsd:int ;
+          :tienePoblaciónMasculina "3216036"^^xsd:int ;
+          :tienePoblaciónTotal "6601650"^^xsd:int .
+
+
 ###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/Psilocibina
 :Psilocibina rdf:type owl:NamedIndividual ,
                       :Psicodélicas .
+
+
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/RepúblicaCheca
+:RepúblicaCheca rdf:type owl:NamedIndividual ,
+                         :País ;
+                :tienePoblaciónFemenina "3250058"^^xsd:int ;
+                :tienePoblaciónMasculina "3404132"^^xsd:int ;
+                :tienePoblaciónTotal "6654190"^^xsd:int .
 
 
 ###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/Salvia
