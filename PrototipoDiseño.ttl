@@ -10,92 +10,201 @@
                                                                         rdfs:comment "Ontología de la rueda de las drogas" .
 
 #################################################################
+#    Annotation properties
+#################################################################
+
+###  http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled
+<http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> rdf:type owl:AnnotationProperty .
+
+
+#################################################################
 #    Object Properties
 #################################################################
 
-###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/ocurreEnPaís
-:ocurreEnPaís rdf:type owl:ObjectProperty ;
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/consumeEn
+:consumeEn rdf:type owl:ObjectProperty ;
+           owl:inverseOf :esConsumidoPor ;
+           rdfs:domain :Consumidor ;
+           rdfs:range :País .
+
+
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/esConsumidoPor
+:esConsumidoPor rdf:type owl:ObjectProperty ;
+                rdfs:domain :País ;
+                rdfs:range :Consumidor .
+
+
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/esEdadDe
+:esEdadDe rdf:type owl:ObjectProperty ;
+          owl:inverseOf :tieneRangoDeEdad ;
+          rdfs:domain :Edad ;
+          rdfs:range :País .
+
+
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/esTratamientoDe
+:esTratamientoDe rdf:type owl:ObjectProperty ;
+                 rdfs:domain :TratamientoDroga ;
+                 rdfs:range :Droga .
+
+
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/ocurreEnPais
+:ocurreEnPais rdf:type owl:ObjectProperty ;
               rdfs:domain :SobredosisLetal ;
               rdfs:range :País .
+
+
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/realizaConsumo
+:realizaConsumo rdf:type owl:ObjectProperty ;
+                rdfs:domain :Consumidor ;
+                rdfs:range :Consumo .
+
+
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/tieneConsumido
+:tieneConsumido rdf:type owl:ObjectProperty ;
+                rdfs:domain :Consumo ;
+                rdfs:range :Droga .
+
+
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/tieneDesintoxicacionDroga
+:tieneDesintoxicacionDroga rdf:type owl:ObjectProperty ;
+                           rdfs:domain :TratamientoDesintoxicación ;
+                           rdfs:range :TratamientoDroga .
+
+
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/tieneRangoDeEdad
+:tieneRangoDeEdad rdf:type owl:ObjectProperty ;
+                  rdfs:domain :País ;
+                  rdfs:range :Edad .
+
+
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/tratadoEn
+:tratadoEn rdf:type owl:ObjectProperty ;
+           rdfs:domain :TratamientoDesintoxicación ;
+           rdfs:range :País .
 
 
 #################################################################
 #    Data properties
 #################################################################
 
-###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/casosRecaída
-:casosRecaída rdf:type owl:DatatypeProperty ;
-              rdfs:domain :TratamientoDesintoxicación ;
-              rdfs:range xsd:int .
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas#porcentajeFallecidosHombres
+:porcentajeFallecidosHombres rdf:type owl:DatatypeProperty ;
+                             rdfs:domain :SobredosisLetal ;
+                             rdfs:range xsd:decimal .
 
 
-###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/casosRehabilitación
-:casosRehabilitación rdf:type owl:DatatypeProperty ;
-                     rdfs:domain :TratamientoDesintoxicación ;
-                     rdfs:range xsd:int .
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas#porcentajeFallecidosMujeres
+:porcentajeFallecidosMujeres rdf:type owl:DatatypeProperty ;
+                             rdfs:domain :SobredosisLetal ;
+                             rdfs:range xsd:decimal .
 
 
-###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/nombreDroga
-:nombreDroga rdf:type owl:DatatypeProperty ;
-             rdfs:domain :Droga ;
-             rdfs:range xsd:string .
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/consumeHombreDrogaEspecifica
+:consumeHombreDrogaEspecifica rdf:type owl:DatatypeProperty ;
+                              rdfs:domain :Consumo ;
+                              rdfs:range xsd:integer .
 
 
-###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/tieneConsumidoresCannabis
-:tieneConsumidoresCannabis rdf:type owl:DatatypeProperty ;
-                           rdfs:range xsd:int .
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/consumeMujerDrogaEspecifica
+:consumeMujerDrogaEspecifica rdf:type owl:DatatypeProperty ;
+                             rdfs:domain :Consumo ;
+                             rdfs:range xsd:integer .
 
 
-###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/tieneConsumidoresCocaína
-:tieneConsumidoresCocaína rdf:type owl:DatatypeProperty ;
-                          rdfs:range xsd:int .
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/consumeTotalDrogaEspecifica
+:consumeTotalDrogaEspecifica rdf:type owl:DatatypeProperty ;
+                             rdfs:domain :Consumo ;
+                             rdfs:range xsd:integer .
 
 
-###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/tieneConsumidoresDrogas
-:tieneConsumidoresDrogas rdf:type owl:DatatypeProperty ;
-                         rdfs:range xsd:int .
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/pacientesHombres
+:pacientesHombres rdf:type owl:DatatypeProperty ;
+                  rdfs:domain :TratamientoDroga ;
+                  rdfs:range xsd:integer .
+
+
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/pacientesHombresDesintoxicacion
+:pacientesHombresDesintoxicacion rdf:type owl:DatatypeProperty ;
+                                 rdfs:domain :TratamientoDesintoxicación ;
+                                 rdfs:range xsd:integer .
+
+
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/pacientesMujeres
+:pacientesMujeres rdf:type owl:DatatypeProperty ;
+                  rdfs:domain :TratamientoDroga ;
+                  rdfs:range xsd:integer .
+
+
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/pacientesMujeresDesintoxicacion
+:pacientesMujeresDesintoxicacion rdf:type owl:DatatypeProperty ;
+                                 rdfs:domain :TratamientoDesintoxicación ;
+                                 rdfs:range xsd:integer .
+
+
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/pacientesTotalDesintoxicacion
+:pacientesTotalDesintoxicacion rdf:type owl:DatatypeProperty ;
+                               rdfs:domain :TratamientoDesintoxicación ;
+                               rdfs:range xsd:integer .
+
+
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/tieneConsumidoresHombres
+:tieneConsumidoresHombres rdf:type owl:DatatypeProperty ;
+                          rdfs:domain :Consumidor ;
+                          rdfs:range xsd:integer .
+
+
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/tieneConsumidoresMujeres
+:tieneConsumidoresMujeres rdf:type owl:DatatypeProperty ;
+                          rdfs:domain :Consumidor ;
+                          rdfs:range xsd:integer .
 
 
 ###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/tieneFallecidos
 :tieneFallecidos rdf:type owl:DatatypeProperty ;
                  rdfs:domain :SobredosisLetal ;
-                 rdfs:range xsd:int .
+                 rdfs:range xsd:integer .
 
 
 ###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/tieneFallecidosHombres
 :tieneFallecidosHombres rdf:type owl:DatatypeProperty ;
                         rdfs:domain :SobredosisLetal ;
-                        rdfs:range xsd:int .
+                        rdfs:range xsd:integer .
 
 
 ###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/tieneFallecidosMujeres
 :tieneFallecidosMujeres rdf:type owl:DatatypeProperty ;
                         rdfs:domain :SobredosisLetal ;
-                        rdfs:range xsd:int .
+                        rdfs:range xsd:integer .
 
 
-###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/tieneNombrePais
-:tieneNombrePais rdf:type owl:DatatypeProperty ;
-                 rdfs:domain :País ;
-                 rdfs:range xsd:string .
-
-
-###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/tienePoblaciónFemenina
-:tienePoblaciónFemenina rdf:type owl:DatatypeProperty ;
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/tienePoblacionFemenina
+:tienePoblacionFemenina rdf:type owl:DatatypeProperty ;
                         rdfs:domain :País ;
-                        rdfs:range xsd:int .
+                        rdfs:range xsd:integer .
 
 
-###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/tienePoblaciónMasculina
-:tienePoblaciónMasculina rdf:type owl:DatatypeProperty ;
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/tienePoblacionMasculina
+:tienePoblacionMasculina rdf:type owl:DatatypeProperty ;
                          rdfs:domain :País ;
-                         rdfs:range xsd:int .
+                         rdfs:range xsd:integer .
 
 
-###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/tienePoblaciónTotal
-:tienePoblaciónTotal rdf:type owl:DatatypeProperty ;
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/tienePoblacionTotal
+:tienePoblacionTotal rdf:type owl:DatatypeProperty ;
                      rdfs:domain :País ;
-                     rdfs:range xsd:int .
+                     rdfs:range xsd:integer .
+
+
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/tieneTotalConsumidores
+:tieneTotalConsumidores rdf:type owl:DatatypeProperty ;
+                        rdfs:domain :Consumidor ;
+                        rdfs:range xsd:integer .
+
+
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/totalPacientes
+:totalPacientes rdf:type owl:DatatypeProperty ;
+                rdfs:domain :TratamientoDroga ;
+                rdfs:range xsd:integer .
 
 
 #################################################################
@@ -105,6 +214,20 @@
 ###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/Cannabinoides
 :Cannabinoides rdf:type owl:Class ;
                rdfs:subClassOf :Droga .
+
+
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/Consumidor
+:Consumidor rdf:type owl:Class ;
+            owl:disjointWith :Consumo ,
+                             :Droga ,
+                             :Edad ,
+                             :País ,
+                             :SobredosisLetal ,
+                             :TratamientoDesintoxicación .
+
+
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/Consumo
+:Consumo rdf:type owl:Class .
 
 
 ###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/Depresoras
@@ -118,11 +241,14 @@
 
 
 ###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/Droga
-:Droga rdf:type owl:Class .
+:Droga rdf:type owl:Class ;
+       owl:disjointWith :Edad ,
+                        :País .
 
 
 ###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/Edad
-:Edad rdf:type owl:Class .
+:Edad rdf:type owl:Class ;
+      owl:disjointWith :País .
 
 
 ###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/Empatógenas
@@ -160,75 +286,23 @@
                 rdfs:subClassOf :TratamientoDesintoxicación .
 
 
-###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/Sexo
-:Sexo rdf:type owl:Class .
-
-
 ###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/SobredosisLetal
-:SobredosisLetal rdf:type owl:Class .
+:SobredosisLetal rdf:type owl:Class ;
+                 owl:disjointWith :TratamientoDesintoxicación .
 
 
 ###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/TratamientoDesintoxicación
-:TratamientoDesintoxicación rdf:type owl:Class .
+:TratamientoDesintoxicación rdf:type owl:Class ;
+                            owl:disjointWith :TratamientoDroga .
+
+
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/TratamientoDroga
+:TratamientoDroga rdf:type owl:Class .
 
 
 #################################################################
 #    Individuals
 #################################################################
-
-###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas#SL_1
-:SL_1 rdf:type owl:NamedIndividual ,
-               :SobredosisLetal ;
-      :ocurreEnPaís :Bélgica ;
-      :tieneFallecidos "172"^^xsd:int ;
-      :tieneFallecidosHombres "137"^^xsd:int ;
-      :tieneFallecidosMujeres "35"^^xsd:int .
-
-
-###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas#SL_2
-:SL_2 rdf:type owl:NamedIndividual ,
-               :SobredosisLetal ;
-      :ocurreEnPaís :RepúblicaCheca ;
-      :tieneFallecidos "64"^^xsd:int ;
-      :tieneFallecidosHombres "42"^^xsd:int ;
-      :tieneFallecidosMujeres "22"^^xsd:int .
-
-
-###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas#SL_3
-:SL_3 rdf:type owl:NamedIndividual ,
-               :SobredosisLetal ;
-      :ocurreEnPaís :Alemania ;
-      :tieneFallecidos "1631"^^xsd:int ;
-      :tieneFallecidosHombres "1354"^^xsd:int ;
-      :tieneFallecidosMujeres "277"^^xsd:int .
-
-
-###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas#SL_4
-:SL_4 rdf:type owl:NamedIndividual ,
-               :SobredosisLetal ;
-      :ocurreEnPaís :Holanda ;
-      :tieneFallecidos "332"^^xsd:int ;
-      :tieneFallecidosHombres "248"^^xsd:int ;
-      :tieneFallecidosMujeres "84"^^xsd:int .
-
-
-###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas#SL_5
-:SL_5 rdf:type owl:NamedIndividual ,
-               :SobredosisLetal ;
-      :ocurreEnPaís :Portugal ;
-      :tieneFallecidos "81"^^xsd:int ;
-      :tieneFallecidosHombres "67"^^xsd:int ;
-      :tieneFallecidosMujeres "14"^^xsd:int .
-
-
-###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas#SL_6
-:SL_6 rdf:type owl:NamedIndividual ,
-               :SobredosisLetal ;
-      :ocurreEnPaís :España ;
-      :tieneFallecidos "820"^^xsd:int ;
-      :tieneFallecidosHombres "615"^^xsd:int ;
-      :tieneFallecidosMujeres "205"^^xsd:int .
-
 
 ###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas#2C-B
 <http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas#2C-B> rdf:type owl:NamedIndividual ,
@@ -248,14 +322,11 @@
 ###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/Alemania
 :Alemania rdf:type owl:NamedIndividual ,
                    :País ;
-          :tienePoblaciónFemenina "26198019"^^xsd:int ;
-          :tienePoblaciónMasculina "26995671"^^xsd:int ;
-          :tienePoblaciónTotal "53193690"^^xsd:int .
-
-
-###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/Ambos
-:Ambos rdf:type owl:NamedIndividual ,
-                :Sexo .
+          :esConsumidoPor :CD_3 ;
+          :tieneRangoDeEdad :GrupoEdad15A64 ;
+          :tienePoblacionFemenina 26198019 ;
+          :tienePoblacionMasculina 26995671 ;
+          :tienePoblacionTotal 53193690 .
 
 
 ###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/Anfetaminas
@@ -286,9 +357,185 @@
 ###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/Bélgica
 :Bélgica rdf:type owl:NamedIndividual ,
                   :País ;
-         :tienePoblaciónMasculina "3678338"^^xsd:int ,
-                                  "3738152"^^xsd:int ;
-         :tienePoblaciónTotal "7416490"^^xsd:int .
+         :esConsumidoPor :CD_1 ;
+         :tieneRangoDeEdad :GrupoEdad15A64 ;
+         :tienePoblacionFemenina 3678338 ;
+         :tienePoblacionMasculina 3738152 ;
+         :tienePoblacionTotal 7416490 .
+
+
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/CCC_1
+:CCC_1 rdf:type owl:NamedIndividual ,
+                :Consumo ;
+       :tieneConsumido :Canabis ;
+       :consumeHombreDrogaEspecifica 388768 ;
+       :consumeMujerDrogaEspecifica 136099 ;
+       :consumeTotalDrogaEspecifica 524867 .
+
+
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/CCC_2
+:CCC_2 rdf:type owl:NamedIndividual ,
+                :Consumo ;
+       :tieneConsumido :Canabis ;
+       :consumeHombreDrogaEspecifica 541257 ;
+       :consumeMujerDrogaEspecifica 201504 ;
+       :consumeTotalDrogaEspecifica 742761 .
+
+
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/CCC_3
+:CCC_3 rdf:type owl:NamedIndividual ,
+                :Consumo ;
+       :tieneConsumido :Canabis ;
+       :consumeHombreDrogaEspecifica 2888537 ;
+       :consumeMujerDrogaEspecifica 1781465 ;
+       :consumeTotalDrogaEspecifica 4670002 .
+
+
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/CCC_4
+:CCC_4 rdf:type owl:NamedIndividual ,
+                :Consumo ;
+       :tieneConsumido :Canabis ;
+       :consumeHombreDrogaEspecifica 783088 ;
+       :consumeMujerDrogaEspecifica 372028 ;
+       :consumeTotalDrogaEspecifica 1155116 .
+
+
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/CCC_5
+:CCC_5 rdf:type owl:NamedIndividual ,
+                :Consumo ;
+       :tieneConsumido :Canabis ;
+       :consumeHombreDrogaEspecifica 144722 ;
+       :consumeMujerDrogaEspecifica 40627 ;
+       :consumeTotalDrogaEspecifica 185349 .
+
+
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/CCC_6
+:CCC_6 rdf:type owl:NamedIndividual ,
+                :Consumo ;
+       :tieneConsumido :Canabis ;
+       :consumeHombreDrogaEspecifica 2272253 ;
+       :consumeMujerDrogaEspecifica 1063383 ;
+       :consumeTotalDrogaEspecifica 3335636 .
+
+
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/CD_1
+:CD_1 rdf:type owl:NamedIndividual ,
+               :Consumidor ;
+      :consumeEn :Bélgica ;
+      :realizaConsumo :CCC_1 ,
+                      :CEC_1 ;
+      :tieneConsumidoresHombres 474745 ;
+      :tieneConsumidoresMujeres 180239 ;
+      :tieneTotalConsumidores 654984 .
+
+
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/CD_2
+:CD_2 rdf:type owl:NamedIndividual ,
+               :Consumidor ;
+      :consumeEn :RepúblicaCheca ;
+      :realizaConsumo :CCC_2 ,
+                      :CEC_2 ;
+      :tieneConsumidoresHombres 663806 ;
+      :tieneConsumidoresMujeres 256755 ;
+      :tieneTotalConsumidores 920561 .
+
+
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/CD_3
+:CD_3 rdf:type owl:NamedIndividual ,
+               :Consumidor ;
+      :consumeEn :Alemania ;
+      :realizaConsumo :CCC_3 ,
+                      :CEC_3 ;
+      :tieneConsumidoresHombres 3023515 ;
+      :tieneConsumidoresMujeres 1912455 ;
+      :tieneTotalConsumidores 4935970 .
+
+
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/CD_4
+:CD_4 rdf:type owl:NamedIndividual ,
+               :Consumidor ;
+      :consumeEn :Holanda ;
+      :realizaConsumo :CCC_4 ,
+                      :CEC_4 ;
+      :tieneConsumidoresHombres 983147 ;
+      :tieneConsumidoresMujeres 518584 ;
+      :tieneTotalConsumidores 1501731 .
+
+
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/CD_5
+:CD_5 rdf:type owl:NamedIndividual ,
+               :Consumidor ;
+      :consumeEn :Portugal ;
+      :realizaConsumo :CCC_5 ,
+                      :CEC_5 ;
+      :tieneConsumidoresHombres 157586 ;
+      :tieneConsumidoresMujeres 44013 ;
+      :tieneTotalConsumidores 201599 .
+
+
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/CD_6
+:CD_6 rdf:type owl:NamedIndividual ,
+               :Consumidor ;
+      :consumeEn :España ;
+      :realizaConsumo :CCC_6 ,
+                      :CEC_6 ;
+      :tieneConsumidoresHombres 2856096 ;
+      :tieneConsumidoresMujeres 1391780 ;
+      :tieneTotalConsumidores 4247876 .
+
+
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/CEC_1
+:CEC_1 rdf:type owl:NamedIndividual ,
+                :Consumo ;
+       :tieneConsumido :Cocaína ;
+       :consumeHombreDrogaEspecifica 82239 ;
+       :consumeMujerDrogaEspecifica 18392 ;
+       :consumeTotalDrogaEspecifica 100631 .
+
+
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/CEC_2
+:CEC_2 rdf:type owl:NamedIndividual ,
+                :Consumo ;
+       :tieneConsumido :Cocaína ;
+       :consumeHombreDrogaEspecifica 44254 ;
+       :consumeMujerDrogaEspecifica 16250 ;
+       :consumeTotalDrogaEspecifica 60504 .
+
+
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/CEC_3
+:CEC_3 rdf:type owl:NamedIndividual ,
+                :Consumo ;
+       :tieneConsumido :Cocaína ;
+       :consumeHombreDrogaEspecifica 566909 ;
+       :consumeMujerDrogaEspecifica 288178 ;
+       :consumeTotalDrogaEspecifica 855087 .
+
+
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/CEC_4
+:CEC_4 rdf:type owl:NamedIndividual ,
+                :Consumo ;
+       :tieneConsumido :Cocaína ;
+       :consumeHombreDrogaEspecifica 240071 ;
+       :consumeMujerDrogaEspecifica 107099 ;
+       :consumeTotalDrogaEspecifica 347170 .
+
+
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/CEC_5
+:CEC_5 rdf:type owl:NamedIndividual ,
+                :Consumo ;
+       :tieneConsumido :Cocaína ;
+       :consumeHombreDrogaEspecifica 9648 ;
+       :consumeMujerDrogaEspecifica 3386 ;
+       :consumeTotalDrogaEspecifica 13034 .
+
+
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/CEC_6
+:CEC_6 rdf:type owl:NamedIndividual ,
+                :Consumo ;
+       :tieneConsumido :Cocaína ;
+       :consumeHombreDrogaEspecifica 568063 ;
+       :consumeMujerDrogaEspecifica 172018 ;
+       :consumeTotalDrogaEspecifica 740081 .
 
 
 ###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/Cafeína
@@ -344,19 +591,16 @@
 ###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/España
 :España rdf:type owl:NamedIndividual ,
                  :País ;
-        :tienePoblaciónFemenina "15637979"^^xsd:int ;
-        :tienePoblaciónMasculina "15779534"^^xsd:int ;
-        :tienePoblaciónTotal "31417513"^^xsd:int .
+        :esConsumidoPor :CD_6 ;
+        :tieneRangoDeEdad :GrupoEdad15A64 ;
+        :tienePoblacionFemenina 15637979 ;
+        :tienePoblacionMasculina 15779534 ;
+        :tienePoblacionTotal 31417513 .
 
 
 ###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/Etilona
 :Etilona rdf:type owl:NamedIndividual ,
                   :Empatógenas .
-
-
-###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/Femenino
-:Femenino rdf:type owl:NamedIndividual ,
-                   :Sexo .
 
 
 ###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/Fentanilo
@@ -371,7 +615,13 @@
 
 ###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/GrupoEdad15A64
 :GrupoEdad15A64 rdf:type owl:NamedIndividual ,
-                         :Edad .
+                         :Edad ;
+                :esEdadDe :Alemania ,
+                          :Bélgica ,
+                          :España ,
+                          :Holanda ,
+                          :Portugal ,
+                          :RepúblicaCheca .
 
 
 ###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/Heroína
@@ -382,9 +632,11 @@
 ###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/Holanda
 :Holanda rdf:type owl:NamedIndividual ,
                   :País ;
-         :tienePoblaciónFemenina "5636788"^^xsd:int ;
-         :tienePoblaciónMasculina "5715970"^^xsd:int ;
-         :tienePoblaciónTotal "11352758"^^xsd:int .
+         :esConsumidoPor :CD_4 ;
+         :tieneRangoDeEdad :GrupoEdad15A64 ;
+         :tienePoblacionFemenina 5636788 ;
+         :tienePoblacionMasculina 5715970 ;
+         :tienePoblacionTotal 11352758 .
 
 
 ###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/Kava
@@ -415,11 +667,6 @@
 ###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/MDMA
 :MDMA rdf:type owl:NamedIndividual ,
                :Empatógenas .
-
-
-###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/Masculino
-:Masculino rdf:type owl:NamedIndividual ,
-                    :Sexo .
 
 
 ###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/Mefedrona
@@ -475,9 +722,11 @@
 ###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/Portugal
 :Portugal rdf:type owl:NamedIndividual ,
                    :País ;
-          :tienePoblaciónFemenina "3385614"^^xsd:int ;
-          :tienePoblaciónMasculina "3216036"^^xsd:int ;
-          :tienePoblaciónTotal "6601650"^^xsd:int .
+          :esConsumidoPor :CD_5 ;
+          :tieneRangoDeEdad :GrupoEdad15A64 ;
+          :tienePoblacionFemenina 3385614 ;
+          :tienePoblacionMasculina 3216036 ;
+          :tienePoblacionTotal 6601650 .
 
 
 ###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/Psilocibina
@@ -488,14 +737,418 @@
 ###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/RepúblicaCheca
 :RepúblicaCheca rdf:type owl:NamedIndividual ,
                          :País ;
-                :tienePoblaciónFemenina "3250058"^^xsd:int ;
-                :tienePoblaciónMasculina "3404132"^^xsd:int ;
-                :tienePoblaciónTotal "6654190"^^xsd:int .
+                :esConsumidoPor :CD_2 ;
+                :tieneRangoDeEdad :GrupoEdad15A64 ;
+                :tienePoblacionFemenina 3250058 ;
+                :tienePoblacionMasculina 3404132 ;
+                :tienePoblacionTotal 6654190 .
+
+
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/SL_1
+:SL_1 rdf:type owl:NamedIndividual ,
+               :SobredosisLetal ;
+      :ocurreEnPais :Bélgica ;
+      :tieneFallecidos 172 ;
+      :tieneFallecidosHombres 137 ;
+      :tieneFallecidosMujeres 35 .
+
+
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/SL_2
+:SL_2 rdf:type owl:NamedIndividual ,
+               :SobredosisLetal ;
+      :ocurreEnPais :RepúblicaCheca ;
+      :tieneFallecidos 64 ;
+      :tieneFallecidosHombres 42 ;
+      :tieneFallecidosMujeres 22 .
+
+
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/SL_3
+:SL_3 rdf:type owl:NamedIndividual ,
+               :SobredosisLetal ;
+      :ocurreEnPais :Alemania ;
+      :tieneFallecidos 1631 ;
+      :tieneFallecidosHombres 1354 ;
+      :tieneFallecidosMujeres 277 .
+
+
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/SL_4
+:SL_4 rdf:type owl:NamedIndividual ,
+               :SobredosisLetal ;
+      :ocurreEnPais :Holanda ;
+      :tieneFallecidos 332 ;
+      :tieneFallecidosHombres 248 ;
+      :tieneFallecidosMujeres 84 .
+
+
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/SL_5
+:SL_5 rdf:type owl:NamedIndividual ,
+               :SobredosisLetal ;
+      :ocurreEnPais :Portugal ;
+      :tieneFallecidos 81 ;
+      :tieneFallecidosHombres 67 ;
+      :tieneFallecidosMujeres 14 .
+
+
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/SL_6
+:SL_6 rdf:type owl:NamedIndividual ,
+               :SobredosisLetal ;
+      :ocurreEnPais :España ;
+      :tieneFallecidos 820 ;
+      :tieneFallecidosHombres 615 ;
+      :tieneFallecidosMujeres 205 .
 
 
 ###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/Salvia
 :Salvia rdf:type owl:NamedIndividual ,
                  :Psicodélicas .
+
+
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/TCaRecaida_1
+:TCaRecaida_1 rdf:type owl:NamedIndividual ,
+                       :TratamientoDroga ;
+              :esTratamientoDe :Canabis ;
+              :pacientesHombres 1232 ;
+              :pacientesMujeres 283 ;
+              :totalPacientes 1515 .
+
+
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/TCaRecaida_2
+:TCaRecaida_2 rdf:type owl:NamedIndividual ,
+                       :TratamientoDroga ;
+              :esTratamientoDe :Canabis ;
+              :pacientesHombres 365 ;
+              :pacientesMujeres 104 ;
+              :totalPacientes 469 .
+
+
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/TCaRecaida_3
+:TCaRecaida_3 rdf:type owl:NamedIndividual ,
+                       :TratamientoDroga ;
+              :esTratamientoDe :Canabis ;
+              :pacientesHombres 5799 ;
+              :pacientesMujeres 1110 ;
+              :totalPacientes 6909 .
+
+
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/TCaRecaida_4
+:TCaRecaida_4 rdf:type owl:NamedIndividual ,
+                       :TratamientoDroga ;
+              :esTratamientoDe :Canabis ;
+              :pacientesHombres 1291 ;
+              :pacientesMujeres 286 ;
+              :totalPacientes 1577 .
+
+
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/TCaRecaida_5
+:TCaRecaida_5 rdf:type owl:NamedIndividual ,
+                       :TratamientoDroga ;
+              :esTratamientoDe :Canabis ;
+              :pacientesHombres 299 ;
+              :pacientesMujeres 43 ;
+              :totalPacientes 342 .
+
+
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/TCaRecaida_6
+:TCaRecaida_6 rdf:type owl:NamedIndividual ,
+                       :TratamientoDroga ;
+              :esTratamientoDe :Canabis ;
+              :pacientesHombres 2562 ;
+              :pacientesMujeres 595 ;
+              :totalPacientes 3157 .
+
+
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/TCaRehabilitacion_1
+:TCaRehabilitacion_1 rdf:type owl:NamedIndividual ,
+                              :TratamientoDroga ;
+                     :esTratamientoDe :Canabis ;
+                     :pacientesHombres 1452 ;
+                     :pacientesMujeres 381 ;
+                     :totalPacientes 1833 .
+
+
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/TCaRehabilitacion_2
+:TCaRehabilitacion_2 rdf:type owl:NamedIndividual ,
+                              :TratamientoDroga ;
+                     :esTratamientoDe :Canabis ;
+                     :pacientesHombres 409 ;
+                     :pacientesMujeres 130 ;
+                     :totalPacientes 539 .
+
+
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/TCaRehabilitacion_3
+:TCaRehabilitacion_3 rdf:type owl:NamedIndividual ,
+                              :TratamientoDroga ;
+                     :esTratamientoDe :Canabis ;
+                     :pacientesHombres 12159 ;
+                     :pacientesMujeres 2781 ;
+                     :totalPacientes 14940 .
+
+
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/TCaRehabilitacion_4
+:TCaRehabilitacion_4 rdf:type owl:NamedIndividual ,
+                              :TratamientoDroga ;
+                     :esTratamientoDe :Canabis ;
+                     :pacientesHombres 2889 ;
+                     :pacientesMujeres 736 ;
+                     :totalPacientes 3625 .
+
+
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/TCaRehabilitacion_5
+:TCaRehabilitacion_5 rdf:type owl:NamedIndividual ,
+                              :TratamientoDroga ;
+                     :esTratamientoDe :Canabis ;
+                     :pacientesHombres 740 ;
+                     :pacientesMujeres 156 ;
+                     :totalPacientes 896 .
+
+
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/TCaRehabilitacion_6
+:TCaRehabilitacion_6 rdf:type owl:NamedIndividual ,
+                              :TratamientoDroga ;
+                     :esTratamientoDe :Canabis ;
+                     :pacientesHombres 6554 ;
+                     :pacientesMujeres 1966 ;
+                     :totalPacientes 8520 .
+
+
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/TCoRecaida_1
+:TCoRecaida_1 rdf:type owl:NamedIndividual ,
+                       :TratamientoDroga ;
+              :esTratamientoDe :Cocaína ;
+              :pacientesHombres 1658 ;
+              :pacientesMujeres 435 ;
+              :totalPacientes 2093 .
+
+
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/TCoRecaida_2
+:TCoRecaida_2 rdf:type owl:NamedIndividual ,
+                       :TratamientoDroga ;
+              :esTratamientoDe :Cocaína ;
+              :pacientesHombres 24 ;
+              :pacientesMujeres 8 ;
+              :totalPacientes 32 .
+
+
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/TCoRecaida_3
+:TCoRecaida_3 rdf:type owl:NamedIndividual ,
+                       :TratamientoDroga ;
+              :esTratamientoDe :Cocaína ;
+              :pacientesHombres 1347 ;
+              :pacientesMujeres 164 ;
+              :totalPacientes 1511 .
+
+
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/TCoRecaida_4
+:TCoRecaida_4 rdf:type owl:NamedIndividual ,
+                       :TratamientoDroga ;
+              :esTratamientoDe :Cocaína ;
+              :pacientesHombres 1133 ;
+              :pacientesMujeres 185 ;
+              :totalPacientes 1318 .
+
+
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/TCoRecaida_5
+:TCoRecaida_5 rdf:type owl:NamedIndividual ,
+                       :TratamientoDroga ;
+              :esTratamientoDe :Cocaína ;
+              :pacientesHombres 301 ;
+              :pacientesMujeres 52 ;
+              :totalPacientes 353 .
+
+
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/TCoRecaida_6
+:TCoRecaida_6 rdf:type owl:NamedIndividual ,
+                       :TratamientoDroga ;
+              :esTratamientoDe :Cocaína ;
+              :pacientesHombres 7798 ;
+              :pacientesMujeres 1198 ;
+              :totalPacientes 8996 .
+
+
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/TCoRehabilitacion_1
+:TCoRehabilitacion_1 rdf:type owl:NamedIndividual ,
+                              :TratamientoDroga ;
+                     :esTratamientoDe :Cocaína ;
+                     :pacientesHombres 863 ;
+                     :pacientesMujeres 239 ;
+                     :totalPacientes 1102 .
+
+
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/TCoRehabilitacion_2
+:TCoRehabilitacion_2 rdf:type owl:NamedIndividual ,
+                              :TratamientoDroga ;
+                     :esTratamientoDe :Cocaína ;
+                     :pacientesHombres 23 ;
+                     :pacientesMujeres 5 ;
+                     :totalPacientes 28 .
+
+
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/TCoRehabilitacion_3
+:TCoRehabilitacion_3 rdf:type owl:NamedIndividual ,
+                              :TratamientoDroga ;
+                     :esTratamientoDe :Cocaína ;
+                     :pacientesHombres 1786 ;
+                     :pacientesMujeres 290 ;
+                     :totalPacientes 2076 .
+
+
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/TCoRehabilitacion_4
+:TCoRehabilitacion_4 rdf:type owl:NamedIndividual ,
+                              :TratamientoDroga ;
+                     :esTratamientoDe :Cocaína ;
+                     :pacientesHombres 1168 ;
+                     :pacientesMujeres 189 ;
+                     :totalPacientes 1357 .
+
+
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/TCoRehabilitacion_5
+:TCoRehabilitacion_5 rdf:type owl:NamedIndividual ,
+                              :TratamientoDroga ;
+                     :esTratamientoDe :Cocaína ;
+                     :pacientesHombres 457 ;
+                     :pacientesMujeres 112 ;
+                     :totalPacientes 569 .
+
+
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/TCoRehabilitacion_6
+:TCoRehabilitacion_6 rdf:type owl:NamedIndividual ,
+                              :TratamientoDroga ;
+                     :esTratamientoDe :Cocaína ;
+                     :pacientesHombres 8865 ;
+                     :pacientesMujeres 1773 ;
+                     :totalPacientes 10638 .
+
+
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/TDRecaida_1
+:TDRecaida_1 rdf:type owl:NamedIndividual ,
+                      :Recaída ;
+             :tieneDesintoxicacionDroga :TCaRecaida_1 ,
+                                        :TCoRecaida_1 ;
+             :tratadoEn :Bélgica ;
+             :pacientesHombresDesintoxicacion 5677 ;
+             :pacientesMujeresDesintoxicacion 1644 ;
+             :pacientesTotalDesintoxicacion 7321 .
+
+
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/TDRecaida_2
+:TDRecaida_2 rdf:type owl:NamedIndividual ,
+                      :Recaída ;
+             :tieneDesintoxicacionDroga :TCaRecaida_2 ,
+                                        :TCoRecaida_2 ;
+             :tratadoEn :RepúblicaCheca ;
+             :pacientesHombresDesintoxicacion 2275 ;
+             :pacientesMujeresDesintoxicacion 1061 ;
+             :pacientesTotalDesintoxicacion 3336 .
+
+
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/TDRecaida_3
+:TDRecaida_3 rdf:type owl:NamedIndividual ,
+                      :Recaída ;
+             :tieneDesintoxicacionDroga :TCaRecaida_3 ,
+                                        :TCoRecaida_3 ;
+             :tratadoEn :Alemania ;
+             :pacientesHombresDesintoxicacion 12900 ;
+             :pacientesMujeresDesintoxicacion 3104 ;
+             :pacientesTotalDesintoxicacion 16004 .
+
+
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/TDRecaida_4
+:TDRecaida_4 rdf:type owl:NamedIndividual ,
+                      :Recaída ;
+             :tieneDesintoxicacionDroga :TCaRecaida_4 ,
+                                        :TCoRecaida_4 ;
+             :tratadoEn :Holanda ;
+             :pacientesHombresDesintoxicacion 3693 ;
+             :pacientesMujeresDesintoxicacion 765 ;
+             :pacientesTotalDesintoxicacion 4458 .
+
+
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/TDRecaida_5
+:TDRecaida_5 rdf:type owl:NamedIndividual ,
+                      :Recaída ;
+             :tieneDesintoxicacionDroga :TCaRecaida_5 ,
+                                        :TCoRecaida_5 ;
+             :tratadoEn :Portugal ;
+             :pacientesHombresDesintoxicacion 1475 ;
+             :pacientesMujeresDesintoxicacion 206 ;
+             :pacientesTotalDesintoxicacion 1681 .
+
+
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/TDRecaida_6
+:TDRecaida_6 rdf:type owl:NamedIndividual ,
+                      :Recaída ;
+             :tieneDesintoxicacionDroga :TCaRecaida_6 ,
+                                        :TCoRecaida_6 ;
+             :tratadoEn :España ;
+             :pacientesHombresDesintoxicacion 15597 ;
+             :pacientesMujeresDesintoxicacion 2741 ;
+             :pacientesTotalDesintoxicacion 18338 .
+
+
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/TDRehabilitacion_1
+:TDRehabilitacion_1 rdf:type owl:NamedIndividual ,
+                             :Rehabilitación ;
+                    :tieneDesintoxicacionDroga :TCaRehabilitacion_1 ,
+                                               :TCoRehabilitacion_1 ;
+                    :tratadoEn :Bélgica ;
+                    :pacientesHombresDesintoxicacion 3095 ;
+                    :pacientesMujeresDesintoxicacion 1014 ;
+                    :pacientesTotalDesintoxicacion 4109 .
+
+
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/TDRehabilitacion_2
+:TDRehabilitacion_2 rdf:type owl:NamedIndividual ,
+                             :Rehabilitación ;
+                    :tieneDesintoxicacionDroga :TCaRehabilitacion_2 ,
+                                               :TCoRehabilitacion_2 ;
+                    :tratadoEn :RepúblicaCheca ;
+                    :pacientesHombresDesintoxicacion 1654 ;
+                    :pacientesMujeresDesintoxicacion 865 ;
+                    :pacientesTotalDesintoxicacion 2519 .
+
+
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/TDRehabilitacion_3
+:TDRehabilitacion_3 rdf:type owl:NamedIndividual ,
+                             :Rehabilitación ;
+                    :tieneDesintoxicacionDroga :TCaRehabilitacion_3 ,
+                                               :TCoRehabilitacion_3 ;
+                    :tratadoEn :Alemania ;
+                    :pacientesHombresDesintoxicacion 17551 ;
+                    :pacientesMujeresDesintoxicacion 4561 ;
+                    :pacientesTotalDesintoxicacion 22112 .
+
+
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/TDRehabilitacion_4
+:TDRehabilitacion_4 rdf:type owl:NamedIndividual ,
+                             :Rehabilitación ;
+                    :tieneDesintoxicacionDroga :TCaRehabilitacion_4 ,
+                                               :TCoRehabilitacion_4 ;
+                    :tratadoEn :Holanda ;
+                    :pacientesHombresDesintoxicacion 5140 ;
+                    :pacientesMujeresDesintoxicacion 1389 ;
+                    :pacientesTotalDesintoxicacion 6529 .
+
+
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/TDRehabilitacion_5
+:TDRehabilitacion_5 rdf:type owl:NamedIndividual ,
+                             :Rehabilitación ;
+                    :tieneDesintoxicacionDroga :TCaRehabilitacion_5 ,
+                                               :TCoRehabilitacion_5 ;
+                    :tratadoEn :Portugal ;
+                    :pacientesHombresDesintoxicacion 1566 ;
+                    :pacientesMujeresDesintoxicacion 349 ;
+                    :pacientesTotalDesintoxicacion 1915 .
+
+
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/TDRehabilitacion_6
+:TDRehabilitacion_6 rdf:type owl:NamedIndividual ,
+                             :Rehabilitación ;
+                    :tieneDesintoxicacionDroga :TCaRehabilitacion_6 ,
+                                               :TCoRehabilitacion_6 ;
+                    :tratadoEn :España ;
+                    :pacientesHombresDesintoxicacion 18769 ;
+                    :pacientesMujeresDesintoxicacion 4693 ;
+                    :pacientesTotalDesintoxicacion 23462 .
 
 
 ###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/Tabaco
@@ -529,4 +1182,142 @@
 ] .
 
 
-###  Generated by the OWL API (version 4.5.26.2023-07-17T20:34:13Z) https://github.com/owlcs/owlapi
+#################################################################
+#    Rules
+#################################################################
+
+:s rdf:type <http://www.w3.org/2003/11/swrl#Variable> .
+
+:total rdf:type <http://www.w3.org/2003/11/swrl#Variable> .
+
+:hombres rdf:type <http://www.w3.org/2003/11/swrl#Variable> .
+
+:divH rdf:type <http://www.w3.org/2003/11/swrl#Variable> .
+
+:porH rdf:type <http://www.w3.org/2003/11/swrl#Variable> .
+
+:mujeres rdf:type <http://www.w3.org/2003/11/swrl#Variable> .
+
+:divM rdf:type <http://www.w3.org/2003/11/swrl#Variable> .
+
+:porM rdf:type <http://www.w3.org/2003/11/swrl#Variable> .
+
+[ <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> "true"^^xsd:boolean ;
+   rdfs:comment "Listado de porcentajes de sobredosis con sexo Mujer" ;
+   rdfs:label "S2" ;
+   rdf:type <http://www.w3.org/2003/11/swrl#Imp> ;
+   <http://www.w3.org/2003/11/swrl#body> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#ClassAtom> ;
+                                                       <http://www.w3.org/2003/11/swrl#classPredicate> :SobredosisLetal ;
+                                                       <http://www.w3.org/2003/11/swrl#argument1> :s
+                                                     ] ;
+                                           rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                      rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom> ;
+                                                                  <http://www.w3.org/2003/11/swrl#propertyPredicate> :tieneFallecidos ;
+                                                                  <http://www.w3.org/2003/11/swrl#argument1> :s ;
+                                                                  <http://www.w3.org/2003/11/swrl#argument2> :total
+                                                                ] ;
+                                                      rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                                 rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom> ;
+                                                                             <http://www.w3.org/2003/11/swrl#propertyPredicate> :tieneFallecidosMujeres ;
+                                                                             <http://www.w3.org/2003/11/swrl#argument1> :s ;
+                                                                             <http://www.w3.org/2003/11/swrl#argument2> :mujeres
+                                                                           ] ;
+                                                                 rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                                            rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#BuiltinAtom> ;
+                                                                                        <http://www.w3.org/2003/11/swrl#builtin> <http://www.w3.org/2003/11/swrlb#divide> ;
+                                                                                        <http://www.w3.org/2003/11/swrl#arguments> ( :divM
+                                                                                                                                     :mujeres
+                                                                                                                                     :total
+                                                                                                                                   )
+                                                                                      ] ;
+                                                                            rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                                                       rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#BuiltinAtom> ;
+                                                                                                   <http://www.w3.org/2003/11/swrl#builtin> <http://www.w3.org/2003/11/swrlb#multiply> ;
+                                                                                                   <http://www.w3.org/2003/11/swrl#arguments> [ rdf:type rdf:List ;
+                                                                                                                                                rdf:first :porM ;
+                                                                                                                                                rdf:rest [ rdf:type rdf:List ;
+                                                                                                                                                           rdf:first :divM ;
+                                                                                                                                                           rdf:rest [ rdf:type rdf:List ;
+                                                                                                                                                                      rdf:first 100 ;
+                                                                                                                                                                      rdf:rest rdf:nil
+                                                                                                                                                                    ]
+                                                                                                                                                         ]
+                                                                                                                                              ]
+                                                                                                 ] ;
+                                                                                       rdf:rest rdf:nil
+                                                                                     ]
+                                                                          ]
+                                                               ]
+                                                    ]
+                                         ] ;
+   <http://www.w3.org/2003/11/swrl#head> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom> ;
+                                                       <http://www.w3.org/2003/11/swrl#propertyPredicate> :porcentajeFallecidosMujeres ;
+                                                       <http://www.w3.org/2003/11/swrl#argument1> :s ;
+                                                       <http://www.w3.org/2003/11/swrl#argument2> :porM
+                                                     ] ;
+                                           rdf:rest rdf:nil
+                                         ]
+ ] .
+
+[ <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> "true"^^xsd:boolean ;
+   rdfs:comment "Listado de porcentajes de sobredosis con sexo Hombre" ;
+   rdfs:label "S1" ;
+   rdf:type <http://www.w3.org/2003/11/swrl#Imp> ;
+   <http://www.w3.org/2003/11/swrl#body> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#ClassAtom> ;
+                                                       <http://www.w3.org/2003/11/swrl#classPredicate> :SobredosisLetal ;
+                                                       <http://www.w3.org/2003/11/swrl#argument1> :s
+                                                     ] ;
+                                           rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                      rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom> ;
+                                                                  <http://www.w3.org/2003/11/swrl#propertyPredicate> :tieneFallecidos ;
+                                                                  <http://www.w3.org/2003/11/swrl#argument1> :s ;
+                                                                  <http://www.w3.org/2003/11/swrl#argument2> :total
+                                                                ] ;
+                                                      rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                                 rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom> ;
+                                                                             <http://www.w3.org/2003/11/swrl#propertyPredicate> :tieneFallecidosHombres ;
+                                                                             <http://www.w3.org/2003/11/swrl#argument1> :s ;
+                                                                             <http://www.w3.org/2003/11/swrl#argument2> :hombres
+                                                                           ] ;
+                                                                 rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                                            rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#BuiltinAtom> ;
+                                                                                        <http://www.w3.org/2003/11/swrl#builtin> <http://www.w3.org/2003/11/swrlb#divide> ;
+                                                                                        <http://www.w3.org/2003/11/swrl#arguments> ( :divH
+                                                                                                                                     :hombres
+                                                                                                                                     :total
+                                                                                                                                   )
+                                                                                      ] ;
+                                                                            rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                                                       rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#BuiltinAtom> ;
+                                                                                                   <http://www.w3.org/2003/11/swrl#builtin> <http://www.w3.org/2003/11/swrlb#multiply> ;
+                                                                                                   <http://www.w3.org/2003/11/swrl#arguments> [ rdf:type rdf:List ;
+                                                                                                                                                rdf:first :porH ;
+                                                                                                                                                rdf:rest [ rdf:type rdf:List ;
+                                                                                                                                                           rdf:first :divH ;
+                                                                                                                                                           rdf:rest [ rdf:type rdf:List ;
+                                                                                                                                                                      rdf:first 100 ;
+                                                                                                                                                                      rdf:rest rdf:nil
+                                                                                                                                                                    ]
+                                                                                                                                                         ]
+                                                                                                                                              ]
+                                                                                                 ] ;
+                                                                                       rdf:rest rdf:nil
+                                                                                     ]
+                                                                          ]
+                                                               ]
+                                                    ]
+                                         ] ;
+   <http://www.w3.org/2003/11/swrl#head> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom> ;
+                                                       <http://www.w3.org/2003/11/swrl#propertyPredicate> :porcentajeFallecidosHombres ;
+                                                       <http://www.w3.org/2003/11/swrl#argument1> :s ;
+                                                       <http://www.w3.org/2003/11/swrl#argument2> :porH
+                                                     ] ;
+                                           rdf:rest rdf:nil
+                                         ]
+ ] .
+
+###  Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi
