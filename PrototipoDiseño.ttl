@@ -87,18 +87,6 @@
 #    Data properties
 #################################################################
 
-###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas#porcentajeFallecidosHombres
-:porcentajeFallecidosHombres rdf:type owl:DatatypeProperty ;
-                             rdfs:domain :SobredosisLetal ;
-                             rdfs:range xsd:decimal .
-
-
-###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas#porcentajeFallecidosMujeres
-:porcentajeFallecidosMujeres rdf:type owl:DatatypeProperty ;
-                             rdfs:domain :SobredosisLetal ;
-                             rdfs:range xsd:decimal .
-
-
 ###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/consumeHombreDrogaEspecifica
 :consumeHombreDrogaEspecifica rdf:type owl:DatatypeProperty ;
                               rdfs:domain :Consumo ;
@@ -211,6 +199,11 @@
 #    Classes
 #################################################################
 
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/AltoConsumidor
+:AltoConsumidor rdf:type owl:Class ;
+                rdfs:subClassOf :Consumidor .
+
+
 ###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/Cannabinoides
 :Cannabinoides rdf:type owl:Class ;
                rdfs:subClassOf :Droga .
@@ -218,6 +211,11 @@
 
 ###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/Consumidor
 :Consumidor rdf:type owl:Class ;
+            rdfs:subClassOf [ rdf:type owl:Restriction ;
+                              owl:onProperty :consumeEn ;
+                              owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                              owl:onClass :País
+                            ] ;
             owl:disjointWith :Consumo ,
                              :Droga ,
                              :Edad ,
@@ -261,6 +259,11 @@
               rdfs:subClassOf :Droga .
 
 
+###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/MayoríaHombres
+:MayoríaHombres rdf:type owl:Class ;
+                rdfs:subClassOf :SobredosisLetal .
+
+
 ###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/Opioides
 :Opioides rdf:type owl:Class ;
           rdfs:subClassOf :Droga .
@@ -288,11 +291,26 @@
 
 ###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/SobredosisLetal
 :SobredosisLetal rdf:type owl:Class ;
+                 rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                   owl:onProperty :ocurreEnPais ;
+                                   owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                   owl:onClass :País
+                                 ] ;
                  owl:disjointWith :TratamientoDesintoxicación .
 
 
 ###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/TratamientoDesintoxicación
 :TratamientoDesintoxicación rdf:type owl:Class ;
+                            rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                              owl:onProperty :tratadoEn ;
+                                              owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                              owl:onClass :País
+                                            ] ,
+                                            [ rdf:type owl:Restriction ;
+                                              owl:onProperty :pacientesTotalDesintoxicacion ;
+                                              owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                              owl:onDataRange xsd:integer
+                                            ] ;
                             owl:disjointWith :TratamientoDroga .
 
 
@@ -306,17 +324,20 @@
 
 ###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas#2C-B
 <http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas#2C-B> rdf:type owl:NamedIndividual ,
+                                                                                     :Droga ,
                                                                                      :Psicodélicas .
 
 
 ###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/Aceite_de_hachís_de_butano
 :Aceite_de_hachís_de_butano rdf:type owl:NamedIndividual ,
-                                     :Cannabinoides .
+                                     :Cannabinoides ,
+                                     :Droga .
 
 
 ###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/Alcohol
 :Alcohol rdf:type owl:NamedIndividual ,
-                  :Depresoras .
+                  :Depresoras ,
+                  :Droga .
 
 
 ###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/Alemania
@@ -331,26 +352,31 @@
 
 ###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/Anfetaminas
 :Anfetaminas rdf:type owl:NamedIndividual ,
+                      :Droga ,
                       :Estimulantes .
 
 
 ###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/Ayahuasca
 :Ayahuasca rdf:type owl:NamedIndividual ,
+                    :Droga ,
                     :Psicodélicas .
 
 
 ###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/Benzodiazepines
 :Benzodiazepines rdf:type owl:NamedIndividual ,
-                          :Depresoras .
+                          :Depresoras ,
+                          :Droga .
 
 
 ###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/Buprenorfina
 :Buprenorfina rdf:type owl:NamedIndividual ,
+                       :Droga ,
                        :Opioides .
 
 
 ###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/Buprenorfina_-_inyectable_de_acción_prolongada
 :Buprenorfina_-_inyectable_de_acción_prolongada rdf:type owl:NamedIndividual ,
+                                                         :Droga ,
                                                          :Opioides .
 
 
@@ -442,6 +468,7 @@
 
 ###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/CD_3
 :CD_3 rdf:type owl:NamedIndividual ,
+               :AltoConsumidor ,
                :Consumidor ;
       :consumeEn :Alemania ;
       :realizaConsumo :CCC_3 ,
@@ -453,6 +480,7 @@
 
 ###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/CD_4
 :CD_4 rdf:type owl:NamedIndividual ,
+               :AltoConsumidor ,
                :Consumidor ;
       :consumeEn :Holanda ;
       :realizaConsumo :CCC_4 ,
@@ -475,6 +503,7 @@
 
 ###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/CD_6
 :CD_6 rdf:type owl:NamedIndividual ,
+               :AltoConsumidor ,
                :Consumidor ;
       :consumeEn :España ;
       :realizaConsumo :CCC_6 ,
@@ -540,51 +569,61 @@
 
 ###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/Cafeína
 :Cafeína rdf:type owl:NamedIndividual ,
+                  :Droga ,
                   :Estimulantes .
 
 
 ###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/Canabis
 :Canabis rdf:type owl:NamedIndividual ,
-                  :Cannabinoides .
+                  :Cannabinoides ,
+                  :Droga .
 
 
 ###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/Canabis_medicinal
 :Canabis_medicinal rdf:type owl:NamedIndividual ,
-                            :Cannabinoides .
+                            :Cannabinoides ,
+                            :Droga .
 
 
 ###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/Cannabidiol
 :Cannabidiol rdf:type owl:NamedIndividual ,
-                      :Cannabinoides .
+                      :Cannabinoides ,
+                      :Droga .
 
 
 ###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/Cannabinoides_sintéticos
 :Cannabinoides_sintéticos rdf:type owl:NamedIndividual ,
-                                   :Cannabinoides .
+                                   :Cannabinoides ,
+                                   :Droga .
 
 
 ###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/Cocaína
 :Cocaína rdf:type owl:NamedIndividual ,
+                  :Droga ,
                   :Estimulantes .
 
 
 ###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/Codeína
 :Codeína rdf:type owl:NamedIndividual ,
+                  :Droga ,
                   :Opioides .
 
 
 ###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/DMT
 :DMT rdf:type owl:NamedIndividual ,
+              :Droga ,
               :Psicodélicas .
 
 
 ###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/DXM
 :DXM rdf:type owl:NamedIndividual ,
-              :Disociativas .
+              :Disociativas ,
+              :Droga .
 
 
 ###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/Dexanfetamina
 :Dexanfetamina rdf:type owl:NamedIndividual ,
+                        :Droga ,
                         :Estimulantes .
 
 
@@ -600,17 +639,20 @@
 
 ###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/Etilona
 :Etilona rdf:type owl:NamedIndividual ,
+                  :Droga ,
                   :Empatógenas .
 
 
 ###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/Fentanilo
 :Fentanilo rdf:type owl:NamedIndividual ,
+                    :Droga ,
                     :Opioides .
 
 
 ###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/GHB
 :GHB rdf:type owl:NamedIndividual ,
-              :Depresoras .
+              :Depresoras ,
+              :Droga .
 
 
 ###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/GrupoEdad15A64
@@ -626,6 +668,7 @@
 
 ###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/Heroína
 :Heroína rdf:type owl:NamedIndividual ,
+                  :Droga ,
                   :Opioides .
 
 
@@ -641,81 +684,97 @@
 
 ###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/Kava
 :Kava rdf:type owl:NamedIndividual ,
-               :Depresoras .
+               :Depresoras ,
+               :Droga .
 
 
 ###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/Ketamina
 :Ketamina rdf:type owl:NamedIndividual ,
-                   :Disociativas .
+                   :Disociativas ,
+                   :Droga .
 
 
 ###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/Khat
 :Khat rdf:type owl:NamedIndividual ,
+               :Droga ,
                :Estimulantes .
 
 
 ###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/LSD
 :LSD rdf:type owl:NamedIndividual ,
+              :Droga ,
               :Psicodélicas .
 
 
 ###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/MDA
 :MDA rdf:type owl:NamedIndividual ,
+              :Droga ,
               :Empatógenas .
 
 
 ###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/MDMA
 :MDMA rdf:type owl:NamedIndividual ,
+               :Droga ,
                :Empatógenas .
 
 
 ###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/Mefedrona
 :Mefedrona rdf:type owl:NamedIndividual ,
+                    :Droga ,
                     :Empatógenas .
 
 
 ###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/Mescalina
 :Mescalina rdf:type owl:NamedIndividual ,
+                    :Droga ,
                     :Psicodélicas .
 
 
 ###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/Metadona
 :Metadona rdf:type owl:NamedIndividual ,
+                   :Droga ,
                    :Opioides .
 
 
 ###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/Metanfentamina_cristalina
 :Metanfentamina_cristalina rdf:type owl:NamedIndividual ,
+                                    :Droga ,
                                     :Estimulantes .
 
 
 ###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/Metoxetamina
 :Metoxetamina rdf:type owl:NamedIndividual ,
-                       :Disociativas .
+                       :Disociativas ,
+                       :Droga .
 
 
 ###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/NBOMes
 :NBOMes rdf:type owl:NamedIndividual ,
+                 :Droga ,
                  :Psicodélicas .
 
 
 ###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/Nitazenos
 :Nitazenos rdf:type owl:NamedIndividual ,
+                    :Droga ,
                     :Opioides .
 
 
 ###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/Nuez_de_betel
 :Nuez_de_betel rdf:type owl:NamedIndividual ,
+                        :Droga ,
                         :Estimulantes .
 
 
 ###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/Opio
 :Opio rdf:type owl:NamedIndividual ,
+               :Droga ,
                :Opioides .
 
 
 ###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/Oxicodona
 :Oxicodona rdf:type owl:NamedIndividual ,
+                    :Droga ,
                     :Opioides .
 
 
@@ -731,6 +790,7 @@
 
 ###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/Psilocibina
 :Psilocibina rdf:type owl:NamedIndividual ,
+                      :Droga ,
                       :Psicodélicas .
 
 
@@ -746,6 +806,7 @@
 
 ###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/SL_1
 :SL_1 rdf:type owl:NamedIndividual ,
+               :MayoríaHombres ,
                :SobredosisLetal ;
       :ocurreEnPais :Bélgica ;
       :tieneFallecidos 172 ;
@@ -764,6 +825,7 @@
 
 ###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/SL_3
 :SL_3 rdf:type owl:NamedIndividual ,
+               :MayoríaHombres ,
                :SobredosisLetal ;
       :ocurreEnPais :Alemania ;
       :tieneFallecidos 1631 ;
@@ -782,6 +844,7 @@
 
 ###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/SL_5
 :SL_5 rdf:type owl:NamedIndividual ,
+               :MayoríaHombres ,
                :SobredosisLetal ;
       :ocurreEnPais :Portugal ;
       :tieneFallecidos 81 ;
@@ -791,6 +854,7 @@
 
 ###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/SL_6
 :SL_6 rdf:type owl:NamedIndividual ,
+               :MayoríaHombres ,
                :SobredosisLetal ;
       :ocurreEnPais :España ;
       :tieneFallecidos 820 ;
@@ -800,6 +864,7 @@
 
 ###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/Salvia
 :Salvia rdf:type owl:NamedIndividual ,
+                 :Droga ,
                  :Psicodélicas .
 
 
@@ -1021,7 +1086,8 @@
 
 ###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/TDRecaida_1
 :TDRecaida_1 rdf:type owl:NamedIndividual ,
-                      :Recaída ;
+                      :Recaída ,
+                      :TratamientoDesintoxicación ;
              :tieneDesintoxicacionDroga :TCaRecaida_1 ,
                                         :TCoRecaida_1 ;
              :tratadoEn :Bélgica ;
@@ -1032,7 +1098,8 @@
 
 ###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/TDRecaida_2
 :TDRecaida_2 rdf:type owl:NamedIndividual ,
-                      :Recaída ;
+                      :Recaída ,
+                      :TratamientoDesintoxicación ;
              :tieneDesintoxicacionDroga :TCaRecaida_2 ,
                                         :TCoRecaida_2 ;
              :tratadoEn :RepúblicaCheca ;
@@ -1043,7 +1110,8 @@
 
 ###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/TDRecaida_3
 :TDRecaida_3 rdf:type owl:NamedIndividual ,
-                      :Recaída ;
+                      :Recaída ,
+                      :TratamientoDesintoxicación ;
              :tieneDesintoxicacionDroga :TCaRecaida_3 ,
                                         :TCoRecaida_3 ;
              :tratadoEn :Alemania ;
@@ -1054,7 +1122,8 @@
 
 ###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/TDRecaida_4
 :TDRecaida_4 rdf:type owl:NamedIndividual ,
-                      :Recaída ;
+                      :Recaída ,
+                      :TratamientoDesintoxicación ;
              :tieneDesintoxicacionDroga :TCaRecaida_4 ,
                                         :TCoRecaida_4 ;
              :tratadoEn :Holanda ;
@@ -1065,7 +1134,8 @@
 
 ###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/TDRecaida_5
 :TDRecaida_5 rdf:type owl:NamedIndividual ,
-                      :Recaída ;
+                      :Recaída ,
+                      :TratamientoDesintoxicación ;
              :tieneDesintoxicacionDroga :TCaRecaida_5 ,
                                         :TCoRecaida_5 ;
              :tratadoEn :Portugal ;
@@ -1076,7 +1146,8 @@
 
 ###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/TDRecaida_6
 :TDRecaida_6 rdf:type owl:NamedIndividual ,
-                      :Recaída ;
+                      :Recaída ,
+                      :TratamientoDesintoxicación ;
              :tieneDesintoxicacionDroga :TCaRecaida_6 ,
                                         :TCoRecaida_6 ;
              :tratadoEn :España ;
@@ -1087,7 +1158,8 @@
 
 ###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/TDRehabilitacion_1
 :TDRehabilitacion_1 rdf:type owl:NamedIndividual ,
-                             :Rehabilitación ;
+                             :Rehabilitación ,
+                             :TratamientoDesintoxicación ;
                     :tieneDesintoxicacionDroga :TCaRehabilitacion_1 ,
                                                :TCoRehabilitacion_1 ;
                     :tratadoEn :Bélgica ;
@@ -1098,7 +1170,8 @@
 
 ###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/TDRehabilitacion_2
 :TDRehabilitacion_2 rdf:type owl:NamedIndividual ,
-                             :Rehabilitación ;
+                             :Rehabilitación ,
+                             :TratamientoDesintoxicación ;
                     :tieneDesintoxicacionDroga :TCaRehabilitacion_2 ,
                                                :TCoRehabilitacion_2 ;
                     :tratadoEn :RepúblicaCheca ;
@@ -1109,7 +1182,8 @@
 
 ###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/TDRehabilitacion_3
 :TDRehabilitacion_3 rdf:type owl:NamedIndividual ,
-                             :Rehabilitación ;
+                             :Rehabilitación ,
+                             :TratamientoDesintoxicación ;
                     :tieneDesintoxicacionDroga :TCaRehabilitacion_3 ,
                                                :TCoRehabilitacion_3 ;
                     :tratadoEn :Alemania ;
@@ -1120,7 +1194,8 @@
 
 ###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/TDRehabilitacion_4
 :TDRehabilitacion_4 rdf:type owl:NamedIndividual ,
-                             :Rehabilitación ;
+                             :Rehabilitación ,
+                             :TratamientoDesintoxicación ;
                     :tieneDesintoxicacionDroga :TCaRehabilitacion_4 ,
                                                :TCoRehabilitacion_4 ;
                     :tratadoEn :Holanda ;
@@ -1131,7 +1206,8 @@
 
 ###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/TDRehabilitacion_5
 :TDRehabilitacion_5 rdf:type owl:NamedIndividual ,
-                             :Rehabilitación ;
+                             :Rehabilitación ,
+                             :TratamientoDesintoxicación ;
                     :tieneDesintoxicacionDroga :TCaRehabilitacion_5 ,
                                                :TCoRehabilitacion_5 ;
                     :tratadoEn :Portugal ;
@@ -1142,7 +1218,8 @@
 
 ###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/TDRehabilitacion_6
 :TDRehabilitacion_6 rdf:type owl:NamedIndividual ,
-                             :Rehabilitación ;
+                             :Rehabilitación ,
+                             :TratamientoDesintoxicación ;
                     :tieneDesintoxicacionDroga :TCaRehabilitacion_6 ,
                                                :TCoRehabilitacion_6 ;
                     :tratadoEn :España ;
@@ -1153,17 +1230,20 @@
 
 ###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/Tabaco
 :Tabaco rdf:type owl:NamedIndividual ,
+                 :Droga ,
                  :Estimulantes .
 
 
 ###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/catinonas_sintéticas
 :catinonas_sintéticas rdf:type owl:NamedIndividual ,
+                               :Droga ,
                                :Estimulantes .
 
 
 ###  http://www.semanticweb.org/manuel/ontologies/2025/3/RuedaDeLasDrogas/Óxido_nitroso
 :Óxido_nitroso rdf:type owl:NamedIndividual ,
-                        :Disociativas .
+                        :Disociativas ,
+                        :Droga .
 
 
 #################################################################
@@ -1186,24 +1266,157 @@
 #    Rules
 #################################################################
 
-:s rdf:type <http://www.w3.org/2003/11/swrl#Variable> .
+:c rdf:type <http://www.w3.org/2003/11/swrl#Variable> .
+
+:p rdf:type <http://www.w3.org/2003/11/swrl#Variable> .
 
 :total rdf:type <http://www.w3.org/2003/11/swrl#Variable> .
 
+:pais rdf:type <http://www.w3.org/2003/11/swrl#Variable> .
+
+:consumo rdf:type <http://www.w3.org/2003/11/swrl#Variable> .
+
+:totalCanabis rdf:type <http://www.w3.org/2003/11/swrl#Variable> .
+
+:totalCocaina rdf:type <http://www.w3.org/2003/11/swrl#Variable> .
+
+:r rdf:type <http://www.w3.org/2003/11/swrl#Variable> .
+
+:totalR rdf:type <http://www.w3.org/2003/11/swrl#Variable> .
+
+:reh rdf:type <http://www.w3.org/2003/11/swrl#Variable> .
+
+:totalReh rdf:type <http://www.w3.org/2003/11/swrl#Variable> .
+
+:s rdf:type <http://www.w3.org/2003/11/swrl#Variable> .
+
 :hombres rdf:type <http://www.w3.org/2003/11/swrl#Variable> .
 
-:divH rdf:type <http://www.w3.org/2003/11/swrl#Variable> .
-
-:porH rdf:type <http://www.w3.org/2003/11/swrl#Variable> .
+:limite rdf:type <http://www.w3.org/2003/11/swrl#Variable> .
 
 :mujeres rdf:type <http://www.w3.org/2003/11/swrl#Variable> .
 
-:divM rdf:type <http://www.w3.org/2003/11/swrl#Variable> .
-
-:porM rdf:type <http://www.w3.org/2003/11/swrl#Variable> .
+:diferencia rdf:type <http://www.w3.org/2003/11/swrl#Variable> .
 
 [ <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> "true"^^xsd:boolean ;
-   rdfs:comment "Listado de porcentajes de sobredosis con sexo Mujer" ;
+   rdfs:comment "" ;
+   rdfs:label "S1" ;
+   rdf:type <http://www.w3.org/2003/11/swrl#Imp> ;
+   <http://www.w3.org/2003/11/swrl#body> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#ClassAtom> ;
+                                                       <http://www.w3.org/2003/11/swrl#classPredicate> :SobredosisLetal ;
+                                                       <http://www.w3.org/2003/11/swrl#argument1> :s
+                                                     ] ;
+                                           rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                      rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom> ;
+                                                                  <http://www.w3.org/2003/11/swrl#propertyPredicate> :ocurreEnPais ;
+                                                                  <http://www.w3.org/2003/11/swrl#argument1> :s ;
+                                                                  <http://www.w3.org/2003/11/swrl#argument2> :pais
+                                                                ] ;
+                                                      rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                                 rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom> ;
+                                                                             <http://www.w3.org/2003/11/swrl#propertyPredicate> :tieneFallecidos ;
+                                                                             <http://www.w3.org/2003/11/swrl#argument1> :s ;
+                                                                             <http://www.w3.org/2003/11/swrl#argument2> :total
+                                                                           ] ;
+                                                                 rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                                            rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom> ;
+                                                                                        <http://www.w3.org/2003/11/swrl#propertyPredicate> :tieneFallecidosHombres ;
+                                                                                        <http://www.w3.org/2003/11/swrl#argument1> :s ;
+                                                                                        <http://www.w3.org/2003/11/swrl#argument2> :hombres
+                                                                                      ] ;
+                                                                            rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                                                       rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#BuiltinAtom> ;
+                                                                                                   <http://www.w3.org/2003/11/swrl#builtin> <http://www.w3.org/2003/11/swrlb#multiply> ;
+                                                                                                   <http://www.w3.org/2003/11/swrl#arguments> [ rdf:type rdf:List ;
+                                                                                                                                                rdf:first :limite ;
+                                                                                                                                                rdf:rest [ rdf:type rdf:List ;
+                                                                                                                                                           rdf:first :total ;
+                                                                                                                                                           rdf:rest [ rdf:type rdf:List ;
+                                                                                                                                                                      rdf:first 0.75 ;
+                                                                                                                                                                      rdf:rest rdf:nil
+                                                                                                                                                                    ]
+                                                                                                                                                         ]
+                                                                                                                                              ]
+                                                                                                 ] ;
+                                                                                       rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                                                                  rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#BuiltinAtom> ;
+                                                                                                              <http://www.w3.org/2003/11/swrl#builtin> <http://www.w3.org/2003/11/swrlb#greaterThanOrEqual> ;
+                                                                                                              <http://www.w3.org/2003/11/swrl#arguments> ( :hombres
+                                                                                                                                                           :limite
+                                                                                                                                                         )
+                                                                                                            ] ;
+                                                                                                  rdf:rest rdf:nil
+                                                                                                ]
+                                                                                     ]
+                                                                          ]
+                                                               ]
+                                                    ]
+                                         ] ;
+   <http://www.w3.org/2003/11/swrl#head> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#BuiltinAtom> ;
+                                                       <http://www.w3.org/2003/11/swrl#builtin> <http://sqwrl.stanford.edu/ontologies/built-ins/3.4/sqwrl.owl#select> ;
+                                                       <http://www.w3.org/2003/11/swrl#arguments> ( :s
+                                                                                                    :pais
+                                                                                                    :total
+                                                                                                    :hombres
+                                                                                                  )
+                                                     ] ;
+                                           rdf:rest rdf:nil
+                                         ]
+ ] .
+
+[ <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> "true"^^xsd:boolean ;
+   rdfs:comment "" ;
+   rdfs:label "S6" ;
+   rdf:type <http://www.w3.org/2003/11/swrl#Imp> ;
+   <http://www.w3.org/2003/11/swrl#body> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#ClassAtom> ;
+                                                       <http://www.w3.org/2003/11/swrl#classPredicate> :Consumidor ;
+                                                       <http://www.w3.org/2003/11/swrl#argument1> :c
+                                                     ] ;
+                                           rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                      rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom> ;
+                                                                  <http://www.w3.org/2003/11/swrl#propertyPredicate> :consumeEn ;
+                                                                  <http://www.w3.org/2003/11/swrl#argument1> :c ;
+                                                                  <http://www.w3.org/2003/11/swrl#argument2> :p
+                                                                ] ;
+                                                      rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                                 rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom> ;
+                                                                             <http://www.w3.org/2003/11/swrl#propertyPredicate> :tieneTotalConsumidores ;
+                                                                             <http://www.w3.org/2003/11/swrl#argument1> :c ;
+                                                                             <http://www.w3.org/2003/11/swrl#argument2> :total
+                                                                           ] ;
+                                                                 rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                                            rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#BuiltinAtom> ;
+                                                                                        <http://www.w3.org/2003/11/swrl#builtin> <http://www.w3.org/2003/11/swrlb#greaterThan> ;
+                                                                                        <http://www.w3.org/2003/11/swrl#arguments> [ rdf:type rdf:List ;
+                                                                                                                                     rdf:first :total ;
+                                                                                                                                     rdf:rest [ rdf:type rdf:List ;
+                                                                                                                                                rdf:first 1000000 ;
+                                                                                                                                                rdf:rest rdf:nil
+                                                                                                                                              ]
+                                                                                                                                   ]
+                                                                                      ] ;
+                                                                            rdf:rest rdf:nil
+                                                                          ]
+                                                               ]
+                                                    ]
+                                         ] ;
+   <http://www.w3.org/2003/11/swrl#head> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#BuiltinAtom> ;
+                                                       <http://www.w3.org/2003/11/swrl#builtin> <http://sqwrl.stanford.edu/ontologies/built-ins/3.4/sqwrl.owl#select> ;
+                                                       <http://www.w3.org/2003/11/swrl#arguments> ( :c
+                                                                                                    :p
+                                                                                                    :total
+                                                                                                  )
+                                                     ] ;
+                                           rdf:rest rdf:nil
+                                         ]
+ ] .
+
+[ <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> "true"^^xsd:boolean ;
+   rdfs:comment "" ;
    rdfs:label "S2" ;
    rdf:type <http://www.w3.org/2003/11/swrl#Imp> ;
    <http://www.w3.org/2003/11/swrl#body> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
@@ -1213,9 +1426,9 @@
                                                      ] ;
                                            rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
                                                       rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom> ;
-                                                                  <http://www.w3.org/2003/11/swrl#propertyPredicate> :tieneFallecidos ;
+                                                                  <http://www.w3.org/2003/11/swrl#propertyPredicate> :tieneFallecidosHombres ;
                                                                   <http://www.w3.org/2003/11/swrl#argument1> :s ;
-                                                                  <http://www.w3.org/2003/11/swrl#argument2> :total
+                                                                  <http://www.w3.org/2003/11/swrl#argument2> :hombres
                                                                 ] ;
                                                       rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
                                                                  rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom> ;
@@ -1225,25 +1438,62 @@
                                                                            ] ;
                                                                  rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
                                                                             rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#BuiltinAtom> ;
-                                                                                        <http://www.w3.org/2003/11/swrl#builtin> <http://www.w3.org/2003/11/swrlb#divide> ;
-                                                                                        <http://www.w3.org/2003/11/swrl#arguments> ( :divM
+                                                                                        <http://www.w3.org/2003/11/swrl#builtin> <http://www.w3.org/2003/11/swrlb#subtract> ;
+                                                                                        <http://www.w3.org/2003/11/swrl#arguments> ( :diferencia
+                                                                                                                                     :hombres
                                                                                                                                      :mujeres
-                                                                                                                                     :total
                                                                                                                                    )
                                                                                       ] ;
+                                                                            rdf:rest rdf:nil
+                                                                          ]
+                                                               ]
+                                                    ]
+                                         ] ;
+   <http://www.w3.org/2003/11/swrl#head> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#BuiltinAtom> ;
+                                                       <http://www.w3.org/2003/11/swrl#builtin> <http://sqwrl.stanford.edu/ontologies/built-ins/3.4/sqwrl.owl#select> ;
+                                                       <http://www.w3.org/2003/11/swrl#arguments> ( :s
+                                                                                                    :hombres
+                                                                                                    :mujeres
+                                                                                                    :diferencia
+                                                                                                  )
+                                                     ] ;
+                                           rdf:rest rdf:nil
+                                         ]
+ ] .
+
+[ <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> "true"^^xsd:boolean ;
+   rdfs:comment "" ;
+   rdfs:label "S4" ;
+   rdf:type <http://www.w3.org/2003/11/swrl#Imp> ;
+   <http://www.w3.org/2003/11/swrl#body> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#ClassAtom> ;
+                                                       <http://www.w3.org/2003/11/swrl#classPredicate> :Consumidor ;
+                                                       <http://www.w3.org/2003/11/swrl#argument1> :c
+                                                     ] ;
+                                           rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                      rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom> ;
+                                                                  <http://www.w3.org/2003/11/swrl#propertyPredicate> :consumeEn ;
+                                                                  <http://www.w3.org/2003/11/swrl#argument1> :c ;
+                                                                  <http://www.w3.org/2003/11/swrl#argument2> :pais
+                                                                ] ;
+                                                      rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                                 rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom> ;
+                                                                             <http://www.w3.org/2003/11/swrl#propertyPredicate> :realizaConsumo ;
+                                                                             <http://www.w3.org/2003/11/swrl#argument1> :c ;
+                                                                             <http://www.w3.org/2003/11/swrl#argument2> :consumo
+                                                                           ] ;
+                                                                 rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                                            rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom> ;
+                                                                                        <http://www.w3.org/2003/11/swrl#propertyPredicate> :tieneConsumido ;
+                                                                                        <http://www.w3.org/2003/11/swrl#argument1> :consumo ;
+                                                                                        <http://www.w3.org/2003/11/swrl#argument2> :Canabis
+                                                                                      ] ;
                                                                             rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
-                                                                                       rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#BuiltinAtom> ;
-                                                                                                   <http://www.w3.org/2003/11/swrl#builtin> <http://www.w3.org/2003/11/swrlb#multiply> ;
-                                                                                                   <http://www.w3.org/2003/11/swrl#arguments> [ rdf:type rdf:List ;
-                                                                                                                                                rdf:first :porM ;
-                                                                                                                                                rdf:rest [ rdf:type rdf:List ;
-                                                                                                                                                           rdf:first :divM ;
-                                                                                                                                                           rdf:rest [ rdf:type rdf:List ;
-                                                                                                                                                                      rdf:first 100 ;
-                                                                                                                                                                      rdf:rest rdf:nil
-                                                                                                                                                                    ]
-                                                                                                                                                         ]
-                                                                                                                                              ]
+                                                                                       rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom> ;
+                                                                                                   <http://www.w3.org/2003/11/swrl#propertyPredicate> :consumeTotalDrogaEspecifica ;
+                                                                                                   <http://www.w3.org/2003/11/swrl#argument1> :consumo ;
+                                                                                                   <http://www.w3.org/2003/11/swrl#argument2> :totalCanabis
                                                                                                  ] ;
                                                                                        rdf:rest rdf:nil
                                                                                      ]
@@ -1252,18 +1502,182 @@
                                                     ]
                                          ] ;
    <http://www.w3.org/2003/11/swrl#head> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
-                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom> ;
-                                                       <http://www.w3.org/2003/11/swrl#propertyPredicate> :porcentajeFallecidosMujeres ;
-                                                       <http://www.w3.org/2003/11/swrl#argument1> :s ;
-                                                       <http://www.w3.org/2003/11/swrl#argument2> :porM
+                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#BuiltinAtom> ;
+                                                       <http://www.w3.org/2003/11/swrl#builtin> <http://sqwrl.stanford.edu/ontologies/built-ins/3.4/sqwrl.owl#select> ;
+                                                       <http://www.w3.org/2003/11/swrl#arguments> ( :pais
+                                                                                                    :totalCanabis
+                                                                                                  )
                                                      ] ;
                                            rdf:rest rdf:nil
                                          ]
  ] .
 
 [ <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> "true"^^xsd:boolean ;
-   rdfs:comment "Listado de porcentajes de sobredosis con sexo Hombre" ;
-   rdfs:label "S1" ;
+   rdfs:comment "" ;
+   rdfs:label "S5" ;
+   rdf:type <http://www.w3.org/2003/11/swrl#Imp> ;
+   <http://www.w3.org/2003/11/swrl#body> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#ClassAtom> ;
+                                                       <http://www.w3.org/2003/11/swrl#classPredicate> :Consumidor ;
+                                                       <http://www.w3.org/2003/11/swrl#argument1> :c
+                                                     ] ;
+                                           rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                      rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom> ;
+                                                                  <http://www.w3.org/2003/11/swrl#propertyPredicate> :consumeEn ;
+                                                                  <http://www.w3.org/2003/11/swrl#argument1> :c ;
+                                                                  <http://www.w3.org/2003/11/swrl#argument2> :pais
+                                                                ] ;
+                                                      rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                                 rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom> ;
+                                                                             <http://www.w3.org/2003/11/swrl#propertyPredicate> :realizaConsumo ;
+                                                                             <http://www.w3.org/2003/11/swrl#argument1> :c ;
+                                                                             <http://www.w3.org/2003/11/swrl#argument2> :consumo
+                                                                           ] ;
+                                                                 rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                                            rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom> ;
+                                                                                        <http://www.w3.org/2003/11/swrl#propertyPredicate> :tieneConsumido ;
+                                                                                        <http://www.w3.org/2003/11/swrl#argument1> :consumo ;
+                                                                                        <http://www.w3.org/2003/11/swrl#argument2> :Cocaína
+                                                                                      ] ;
+                                                                            rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                                                       rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom> ;
+                                                                                                   <http://www.w3.org/2003/11/swrl#propertyPredicate> :consumeTotalDrogaEspecifica ;
+                                                                                                   <http://www.w3.org/2003/11/swrl#argument1> :consumo ;
+                                                                                                   <http://www.w3.org/2003/11/swrl#argument2> :totalCocaina
+                                                                                                 ] ;
+                                                                                       rdf:rest rdf:nil
+                                                                                     ]
+                                                                          ]
+                                                               ]
+                                                    ]
+                                         ] ;
+   <http://www.w3.org/2003/11/swrl#head> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#BuiltinAtom> ;
+                                                       <http://www.w3.org/2003/11/swrl#builtin> <http://sqwrl.stanford.edu/ontologies/built-ins/3.4/sqwrl.owl#select> ;
+                                                       <http://www.w3.org/2003/11/swrl#arguments> ( :pais
+                                                                                                    :totalCocaina
+                                                                                                  )
+                                                     ] ;
+                                           rdf:rest rdf:nil
+                                         ]
+ ] .
+
+[ <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> "true"^^xsd:boolean ;
+   rdfs:comment "" ;
+   rdfs:label "S7" ;
+   rdf:type <http://www.w3.org/2003/11/swrl#Imp> ;
+   <http://www.w3.org/2003/11/swrl#body> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#ClassAtom> ;
+                                                       <http://www.w3.org/2003/11/swrl#classPredicate> :Consumidor ;
+                                                       <http://www.w3.org/2003/11/swrl#argument1> :c
+                                                     ] ;
+                                           rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                      rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom> ;
+                                                                  <http://www.w3.org/2003/11/swrl#propertyPredicate> :tieneTotalConsumidores ;
+                                                                  <http://www.w3.org/2003/11/swrl#argument1> :c ;
+                                                                  <http://www.w3.org/2003/11/swrl#argument2> :total
+                                                                ] ;
+                                                      rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                                 rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#BuiltinAtom> ;
+                                                                             <http://www.w3.org/2003/11/swrl#builtin> <http://www.w3.org/2003/11/swrlb#greaterThan> ;
+                                                                             <http://www.w3.org/2003/11/swrl#arguments> [ rdf:type rdf:List ;
+                                                                                                                          rdf:first :total ;
+                                                                                                                          rdf:rest [ rdf:type rdf:List ;
+                                                                                                                                     rdf:first 1000000 ;
+                                                                                                                                     rdf:rest rdf:nil
+                                                                                                                                   ]
+                                                                                                                        ]
+                                                                           ] ;
+                                                                 rdf:rest rdf:nil
+                                                               ]
+                                                    ]
+                                         ] ;
+   <http://www.w3.org/2003/11/swrl#head> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#ClassAtom> ;
+                                                       <http://www.w3.org/2003/11/swrl#classPredicate> :AltoConsumidor ;
+                                                       <http://www.w3.org/2003/11/swrl#argument1> :c
+                                                     ] ;
+                                           rdf:rest rdf:nil
+                                         ]
+ ] .
+
+[ <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> "true"^^xsd:boolean ;
+   rdfs:comment "" ;
+   rdfs:label "S8" ;
+   rdf:type <http://www.w3.org/2003/11/swrl#Imp> ;
+   <http://www.w3.org/2003/11/swrl#body> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#ClassAtom> ;
+                                                       <http://www.w3.org/2003/11/swrl#classPredicate> :Recaída ;
+                                                       <http://www.w3.org/2003/11/swrl#argument1> :r
+                                                     ] ;
+                                           rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                      rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom> ;
+                                                                  <http://www.w3.org/2003/11/swrl#propertyPredicate> :tratadoEn ;
+                                                                  <http://www.w3.org/2003/11/swrl#argument1> :r ;
+                                                                  <http://www.w3.org/2003/11/swrl#argument2> :pais
+                                                                ] ;
+                                                      rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                                 rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom> ;
+                                                                             <http://www.w3.org/2003/11/swrl#propertyPredicate> :pacientesTotalDesintoxicacion ;
+                                                                             <http://www.w3.org/2003/11/swrl#argument1> :r ;
+                                                                             <http://www.w3.org/2003/11/swrl#argument2> :totalR
+                                                                           ] ;
+                                                                 rdf:rest rdf:nil
+                                                               ]
+                                                    ]
+                                         ] ;
+   <http://www.w3.org/2003/11/swrl#head> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#BuiltinAtom> ;
+                                                       <http://www.w3.org/2003/11/swrl#builtin> <http://sqwrl.stanford.edu/ontologies/built-ins/3.4/sqwrl.owl#select> ;
+                                                       <http://www.w3.org/2003/11/swrl#arguments> ( :r
+                                                                                                    :pais
+                                                                                                    :totalR
+                                                                                                  )
+                                                     ] ;
+                                           rdf:rest rdf:nil
+                                         ]
+ ] .
+
+[ <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> "true"^^xsd:boolean ;
+   rdfs:comment "" ;
+   rdfs:label "S9" ;
+   rdf:type <http://www.w3.org/2003/11/swrl#Imp> ;
+   <http://www.w3.org/2003/11/swrl#body> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#ClassAtom> ;
+                                                       <http://www.w3.org/2003/11/swrl#classPredicate> :Rehabilitación ;
+                                                       <http://www.w3.org/2003/11/swrl#argument1> :reh
+                                                     ] ;
+                                           rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                      rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom> ;
+                                                                  <http://www.w3.org/2003/11/swrl#propertyPredicate> :tratadoEn ;
+                                                                  <http://www.w3.org/2003/11/swrl#argument1> :reh ;
+                                                                  <http://www.w3.org/2003/11/swrl#argument2> :pais
+                                                                ] ;
+                                                      rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                                 rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom> ;
+                                                                             <http://www.w3.org/2003/11/swrl#propertyPredicate> :pacientesTotalDesintoxicacion ;
+                                                                             <http://www.w3.org/2003/11/swrl#argument1> :reh ;
+                                                                             <http://www.w3.org/2003/11/swrl#argument2> :totalReh
+                                                                           ] ;
+                                                                 rdf:rest rdf:nil
+                                                               ]
+                                                    ]
+                                         ] ;
+   <http://www.w3.org/2003/11/swrl#head> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#BuiltinAtom> ;
+                                                       <http://www.w3.org/2003/11/swrl#builtin> <http://sqwrl.stanford.edu/ontologies/built-ins/3.4/sqwrl.owl#select> ;
+                                                       <http://www.w3.org/2003/11/swrl#arguments> ( :reh
+                                                                                                    :pais
+                                                                                                    :totalReh
+                                                                                                  )
+                                                     ] ;
+                                           rdf:rest rdf:nil
+                                         ]
+ ] .
+
+[ <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> "true"^^xsd:boolean ;
+   rdfs:comment "" ;
+   rdfs:label "S3" ;
    rdf:type <http://www.w3.org/2003/11/swrl#Imp> ;
    <http://www.w3.org/2003/11/swrl#body> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
                                            rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#ClassAtom> ;
@@ -1271,50 +1685,55 @@
                                                        <http://www.w3.org/2003/11/swrl#argument1> :s
                                                      ] ;
                                            rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
-                                                      rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom> ;
-                                                                  <http://www.w3.org/2003/11/swrl#propertyPredicate> :tieneFallecidos ;
+                                                      rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom> ;
+                                                                  <http://www.w3.org/2003/11/swrl#propertyPredicate> :ocurreEnPais ;
                                                                   <http://www.w3.org/2003/11/swrl#argument1> :s ;
-                                                                  <http://www.w3.org/2003/11/swrl#argument2> :total
+                                                                  <http://www.w3.org/2003/11/swrl#argument2> :pais
                                                                 ] ;
                                                       rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
                                                                  rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom> ;
-                                                                             <http://www.w3.org/2003/11/swrl#propertyPredicate> :tieneFallecidosHombres ;
+                                                                             <http://www.w3.org/2003/11/swrl#propertyPredicate> :tieneFallecidos ;
                                                                              <http://www.w3.org/2003/11/swrl#argument1> :s ;
-                                                                             <http://www.w3.org/2003/11/swrl#argument2> :hombres
+                                                                             <http://www.w3.org/2003/11/swrl#argument2> :total
                                                                            ] ;
                                                                  rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
-                                                                            rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#BuiltinAtom> ;
-                                                                                        <http://www.w3.org/2003/11/swrl#builtin> <http://www.w3.org/2003/11/swrlb#divide> ;
-                                                                                        <http://www.w3.org/2003/11/swrl#arguments> ( :divH
-                                                                                                                                     :hombres
-                                                                                                                                     :total
-                                                                                                                                   )
+                                                                            rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom> ;
+                                                                                        <http://www.w3.org/2003/11/swrl#propertyPredicate> :tieneFallecidosHombres ;
+                                                                                        <http://www.w3.org/2003/11/swrl#argument1> :s ;
+                                                                                        <http://www.w3.org/2003/11/swrl#argument2> :hombres
                                                                                       ] ;
                                                                             rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
                                                                                        rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#BuiltinAtom> ;
                                                                                                    <http://www.w3.org/2003/11/swrl#builtin> <http://www.w3.org/2003/11/swrlb#multiply> ;
                                                                                                    <http://www.w3.org/2003/11/swrl#arguments> [ rdf:type rdf:List ;
-                                                                                                                                                rdf:first :porH ;
+                                                                                                                                                rdf:first :limite ;
                                                                                                                                                 rdf:rest [ rdf:type rdf:List ;
-                                                                                                                                                           rdf:first :divH ;
+                                                                                                                                                           rdf:first :total ;
                                                                                                                                                            rdf:rest [ rdf:type rdf:List ;
-                                                                                                                                                                      rdf:first 100 ;
+                                                                                                                                                                      rdf:first 0.75 ;
                                                                                                                                                                       rdf:rest rdf:nil
                                                                                                                                                                     ]
                                                                                                                                                          ]
                                                                                                                                               ]
                                                                                                  ] ;
-                                                                                       rdf:rest rdf:nil
+                                                                                       rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                                                                  rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#BuiltinAtom> ;
+                                                                                                              <http://www.w3.org/2003/11/swrl#builtin> <http://www.w3.org/2003/11/swrlb#greaterThanOrEqual> ;
+                                                                                                              <http://www.w3.org/2003/11/swrl#arguments> ( :hombres
+                                                                                                                                                           :limite
+                                                                                                                                                         )
+                                                                                                            ] ;
+                                                                                                  rdf:rest rdf:nil
+                                                                                                ]
                                                                                      ]
                                                                           ]
                                                                ]
                                                     ]
                                          ] ;
    <http://www.w3.org/2003/11/swrl#head> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
-                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom> ;
-                                                       <http://www.w3.org/2003/11/swrl#propertyPredicate> :porcentajeFallecidosHombres ;
-                                                       <http://www.w3.org/2003/11/swrl#argument1> :s ;
-                                                       <http://www.w3.org/2003/11/swrl#argument2> :porH
+                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#ClassAtom> ;
+                                                       <http://www.w3.org/2003/11/swrl#classPredicate> :MayoríaHombres ;
+                                                       <http://www.w3.org/2003/11/swrl#argument1> :s
                                                      ] ;
                                            rdf:rest rdf:nil
                                          ]
